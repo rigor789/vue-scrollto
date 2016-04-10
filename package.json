@@ -1,6 +1,6 @@
 {
   "name": "vue-scrollTo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds a directive that listens for click events and scrolls to elements.",
   "main": "index.js",
   "keywords": [
