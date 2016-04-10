@@ -27,6 +27,10 @@ Vue.use(vueScrollTo);
 </div>
 ```
 
+## Info
+
+Currently depends on jQuery, I would like to remove the dependency eventually.
+
 ## License
 
 MIT
