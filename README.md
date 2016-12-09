@@ -20,9 +20,9 @@ Vue.use(vueScrollTo);
 ```
 
 ```html
-<a href="#" v-scroll-to=".element">Scroll to .element</a>
+<a href="#" v-scroll-to="'#element'">Scroll to #element</a>
 
-<div class="element">
+<div id="element">
     Hi. I'm element.
 </div>
 ```

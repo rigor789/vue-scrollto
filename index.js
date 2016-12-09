@@ -3,28 +3,28 @@
 var $ = require('jquery')
 
 exports.install = function(Vue) {
-  var _ = Vue.util
+  function handleClick(e) {
+    e.preventDefault()
+    var page = $('html, body')
+    var events = 'scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove'
+    page.on(events, function() {
+      page.stop()
+    });
+
+    page.animate({
+      scrollTop: $(this.value).offset().top + 'px'
+    }, 300, function() {
+      page.off(events)
+    })
+  }
+
 
   Vue.directive('scroll-to', {
-    bind: function() {
-      _.on(this.el, 'click', this.handleClick.bind(this))
+    bind: function(el, binding) {
+      el.addEventListener('click', handleClick.bind(binding))
     },
-    unbind: function() {
-      _.off(this.el, 'click', this.handleClick)
-    },
-    handleClick: function(e) {
-      e.preventDefault()
-      var page = $('html, body')
-      var events = 'scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove'
-      page.on(events, function() {
-        page.stop()
-      });
-
-      page.animate({
-        scrollTop: $(this.expression).offset().top + 'px'
-      }, 300, function() {
-        page.off(events)
-      })
+    unbind: function(el) {
+      el.removeEventListener('click', handleClick)
     }
   })
 }
