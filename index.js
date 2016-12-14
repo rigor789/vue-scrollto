@@ -1,6 +1,5 @@
 'use strict'
 
-var $ = require('jquery')
 var BezierEasing = require('bezier-easing')
 
 var _ = exports.utils = {
