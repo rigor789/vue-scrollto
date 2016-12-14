@@ -23,6 +23,6 @@
     "url": "https://github.com/rigor789/vue-scrollTo"
   },
   "dependencies": {
-    "jquery": "^2.2.3"
+    "bezier-easing": "^2.0.3"
   }
 }
