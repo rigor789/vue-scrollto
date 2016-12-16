@@ -69,7 +69,7 @@ exports.scrollTo = function (element, duration, options) {
     if (!diff) return
 
     window.requestAnimationFrame(function step(timestamp) {
-        if (abort) return
+        if (abort) return done()
         if (!start) start = timestamp
 
         var time = timestamp - start
