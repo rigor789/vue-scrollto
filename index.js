@@ -45,6 +45,10 @@ exports.install = function (Vue) {
 }
 
 exports.scrollTo = function (element, duration, options) {
+    if(typeof element === 'string') {
+        element = _.$(element)
+    }
+
     var page = _.$('html, body')
     var events = ['scroll', 'mousedown', 'wheel', 'DOMMouseScroll', 'mousewheel', 'keyup', 'touchmove']
     var abort = false
@@ -56,7 +60,7 @@ exports.scrollTo = function (element, duration, options) {
     _.on(page, events, abortFn)
 
     var initialY = window.pageYOffset
-    var elementY = initialY + _.$(element).getBoundingClientRect().top
+    var elementY = initialY + element.getBoundingClientRect().top
     var targetY = document.body.scrollHeight - elementY < window.innerHeight ? document.body.scrollHeight - window.innerHeight : elementY
     var diff = targetY - initialY
     var easing = BezierEasing.apply(BezierEasing, options.easing)
