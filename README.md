@@ -42,7 +42,8 @@ Vue.use(vueScrollTo);
 var vueScrollTo = require('vue-scrollTo');
 
 var options = {
-    easing: vueScrollTo.easing['ease-in']
+    easing: vueScrollTo.easing['ease-in'],
+    offset: -60
 }
 
 vueScrollTo.scrollTo(element, duration, options)
