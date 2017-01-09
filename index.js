@@ -62,6 +62,11 @@ exports.scrollTo = function (element, duration, options) {
     var initialY = window.pageYOffset
     var elementY = initialY + element.getBoundingClientRect().top
     var targetY = document.body.scrollHeight - elementY < window.innerHeight ? document.body.scrollHeight - window.innerHeight : elementY
+    
+    if (options.offset) {
+        targetY += options.offset
+    }
+
     var diff = targetY - initialY
     var easing = BezierEasing.apply(BezierEasing, options.easing)
     var start
