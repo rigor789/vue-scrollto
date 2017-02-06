@@ -28,8 +28,9 @@ exports.install = function (Vue) {
     function handleClick(e) {
         e.preventDefault()
 
-        exports.scrollTo(this.value, 500, {
-            easing: exports.easing['ease']
+        exports.scrollTo(this.value.scrollTo, 500, {
+            easing: exports.easing['ease'],
+            offset: this.value.offset
         })
     }
 
