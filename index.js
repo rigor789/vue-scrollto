@@ -30,7 +30,7 @@ exports.install = function (Vue) {
 
         if (typeof this.value === 'object') {
           exports.scrollTo(this.value.el || this.value.element , this.value.duration || 500, {
-            easing: this.value.easing || exports.easing['ease'],
+            easing: (typeof this.value.easing === 'string' ? exports.easing[this.value.easing] : this.value.easing) || exports.easing['ease'],
             offset: this.value.offset || 0
           })
         } else {
