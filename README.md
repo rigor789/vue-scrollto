@@ -38,6 +38,14 @@ Vue.use(vueScrollTo);
 </div>
 ```
 
+You can also use an object literal to pass in options:
+
+```html
+<a href="#" v-scroll-to="{ el: '#element', duration: 500, easing: 'linear', offset: -200}">Scroll to #element</a>
+```
+
+*Note on easing:* you can use the [easings included](#customize-easing), or you can specify your own in the form of `easing: [.6, -.80, .30, 1.9]`
+
 ### Programatically
 
 ```js
@@ -51,7 +59,7 @@ var options = {
 vueScrollTo.scrollTo(element, duration, options)
 ```
 
-#### Custimize easing
+#### Customize easing
 
 Easing is done with [bezier-easing](https://github.com/gre/bezier-easing)
 so you can pass your own values into
