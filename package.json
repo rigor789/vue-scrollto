@@ -24,5 +24,8 @@
   },
   "dependencies": {
     "bezier-easing": "^2.0.3"
+  },
+  "scripts": {
+    "build-examples": "vue build examples.vue --prod --dist example --config examples.config.js"
   }
 }
