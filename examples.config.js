@@ -11,7 +11,7 @@ module.exports = {
 
     webpack: {
         output: {
-            publicPath: './'
+            publicPath: '/vue-scrollTo/'
         }
     }
 }
