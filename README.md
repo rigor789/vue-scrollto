@@ -2,6 +2,8 @@
 [![npm](https://img.shields.io/npm/v/vue-scrollTo.svg)](https://www.npmjs.com/package/vue-scrollTo)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollTo/blob/master/LICENSE)
 
+[DEMO](https://rigor789.github.io/vue-scrollTo/)
+
 This is a [Vue.js](https://github.com/vuejs/vue) directive that
 can scroll to elements on the page.
 
