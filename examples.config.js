@@ -7,5 +7,11 @@ module.exports = {
 
     html: {
         title: 'vue-scrollTo examples'
+    },
+
+    webpack: {
+        output: {
+            publicPath: './'
+        }
     }
 }
