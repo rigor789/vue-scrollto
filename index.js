@@ -29,9 +29,9 @@ exports.install = function (Vue) {
         e.preventDefault()
 
         if (typeof this.value === 'object') {
-          exports.scrollTo(this.value.el, 500, {
-            easing: exports.easing['ease'],
-            offset: this.value.offset
+          exports.scrollTo(this.value.el || this.value.element , this.value.duration || 500, {
+            easing: this.value.easing || exports.easing['ease'],
+            offset: this.value.offset || 0
           })
         } else {
           exports.scrollTo(this.value, 500, {
@@ -69,7 +69,7 @@ exports.scrollTo = function (element, duration, options) {
     var initialY = window.pageYOffset
     var elementY = initialY + element.getBoundingClientRect().top
     var targetY = document.body.scrollHeight - elementY < window.innerHeight ? document.body.scrollHeight - window.innerHeight : elementY
-    
+
     if (options.offset) {
         targetY += options.offset
     }
