@@ -29,14 +29,14 @@ exports.install = function (Vue) {
         e.preventDefault()
 
         if (typeof this.value === 'object') {
-          exports.scrollTo(this.value.el || this.value.element , this.value.duration || 500, {
-            easing: (typeof this.value.easing === 'string' ? exports.easing[this.value.easing] : this.value.easing) || exports.easing['ease'],
-            offset: this.value.offset || 0
-          })
+            exports.scrollTo(this.value.el || this.value.element, this.value.duration || 500, {
+                easing: (typeof this.value.easing === 'string' ? exports.easing[this.value.easing] : this.value.easing) || exports.easing['ease'],
+                offset: this.value.offset || 0
+            })
         } else {
-          exports.scrollTo(this.value, 500, {
-            easing: exports.easing['ease']
-          })
+            exports.scrollTo(this.value, 500, {
+                easing: exports.easing['ease']
+            })
         }
     }
 
@@ -52,7 +52,7 @@ exports.install = function (Vue) {
 }
 
 exports.scrollTo = function (element, duration, options) {
-    if(typeof element === 'string') {
+    if (typeof element === 'string') {
         element = _.$(element)
     }
 
