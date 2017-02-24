@@ -31,7 +31,9 @@ exports.install = function (Vue) {
         if (typeof this.value === 'object') {
             exports.scrollTo(this.value.el || this.value.element, this.value.duration || 500, {
                 easing: (typeof this.value.easing === 'string' ? exports.easing[this.value.easing] : this.value.easing) || exports.easing['ease'],
-                offset: this.value.offset || 0
+                offset: this.value.offset || 0,
+                onDone: this.value.onDone,
+                onCancel: this.value.onCancel
             })
         } else {
             exports.scrollTo(this.value, 500, {
@@ -80,6 +82,8 @@ exports.scrollTo = function (element, duration, options) {
 
     var done = function () {
         _.off(page, events, abortFn)
+        if (abort && options.onCancel) options.onCancel()
+        if (!abort && options.onDone) options.onDone()
     }
 
     if (!diff) return

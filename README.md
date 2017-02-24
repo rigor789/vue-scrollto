@@ -41,7 +41,9 @@ Vue.use(vueScrollTo);
 You can also use an object literal to pass in options:
 
 ```html
-<a href="#" v-scroll-to="{ el: '#element', duration: 500, easing: 'linear', offset: -200}">Scroll to #element</a>
+<a href="#" v-scroll-to="{ el: '#element', duration: 500, easing: 'linear', offset: -200, onDone: onDone, onCancel: onCancel}">
+    Scroll to #element
+</a>
 ```
 
 *Note on easing:* you can use the [easings included](#customize-easing), or you can specify your own in the form of `easing: [.6, -.80, .30, 1.9]`
@@ -53,7 +55,13 @@ var vueScrollTo = require('vue-scrollTo');
 
 var options = {
     easing: vueScrollTo.easing['ease-in'],
-    offset: -60
+    offset: -60,
+    onDone: function() {
+      // scrolling is done
+    },
+    onCancel: function() {
+      // scrolling has been interrupted
+    }
 }
 
 vueScrollTo.scrollTo(element, duration, options)
