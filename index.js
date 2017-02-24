@@ -1,115 +1,131 @@
-'use strict'
+"use strict";
 
-var BezierEasing = require('bezier-easing')
+var BezierEasing = require("bezier-easing");
 
 var _ = exports.utils = {
-    $: function (selector) {
-        return document.querySelector(selector)
+    $: function(selector) {
+        return document.querySelector(selector);
     },
-    on: function (element, events, handler) {
+    on: function(element, events, handler) {
         if (!(events instanceof Array)) {
-            events = [events]
+            events = [events];
         }
         for (var i = 0; i < events.length; i++) {
-            element.addEventListener(events[i], handler)
+            element.addEventListener(events[i], handler);
         }
     },
-    off: function (element, events, handler) {
+    off: function(element, events, handler) {
         if (!(events instanceof Array)) {
-            events = [events]
+            events = [events];
         }
         for (var i = 0; i < events.length; i++) {
-            element.removeEventListener(events[i], handler)
+            element.removeEventListener(events[i], handler);
         }
     }
-}
+};
 
-exports.install = function (Vue) {
+exports.install = function(Vue) {
     function handleClick(e) {
-        e.preventDefault()
+        e.preventDefault();
 
-        if (typeof this.value === 'object') {
-            exports.scrollTo(this.value.el || this.value.element, this.value.duration || 500, {
-                easing: (typeof this.value.easing === 'string' ? exports.easing[this.value.easing] : this.value.easing) || exports.easing['ease'],
-                offset: this.value.offset || 0,
-                onDone: this.value.onDone,
-                onCancel: this.value.onCancel
-            })
+        if (typeof this.value === "object") {
+            exports.scrollTo(
+                this.value.el || this.value.element,
+                this.value.duration || 500,
+                {
+                    easing: (typeof this.value.easing === "string"
+                        ? exports.easing[this.value.easing]
+                        : this.value.easing) ||
+                        exports.easing["ease"],
+                    offset: this.value.offset || 0,
+                    onDone: this.value.onDone,
+                    onCancel: this.value.onCancel
+                }
+            );
         } else {
             exports.scrollTo(this.value, 500, {
-                easing: exports.easing['ease']
-            })
+                easing: exports.easing["ease"]
+            });
         }
     }
 
-
-    Vue.directive('scroll-to', {
-        bind: function (el, binding) {
-            _.on(el, 'click', handleClick.bind(binding))
+    Vue.directive("scroll-to", {
+        bind: function(el, binding) {
+            _.on(el, "click", handleClick.bind(binding));
         },
-        unbind: function (el) {
-            _.off(el, 'click', handleClick)
+        unbind: function(el) {
+            _.off(el, "click", handleClick);
         }
-    })
-}
+    });
+};
 
-exports.scrollTo = function (element, duration, options) {
-    if (typeof element === 'string') {
-        element = _.$(element)
+exports.scrollTo = function(element, duration, options) {
+    if (typeof element === "string") {
+        element = _.$(element);
     }
 
-    var page = _.$('html, body')
-    var events = ['scroll', 'mousedown', 'wheel', 'DOMMouseScroll', 'mousewheel', 'keyup', 'touchmove']
-    var abort = false
+    var page = _.$("html, body");
+    var events = [
+        "scroll",
+        "mousedown",
+        "wheel",
+        "DOMMouseScroll",
+        "mousewheel",
+        "keyup",
+        "touchmove"
+    ];
+    var abort = false;
 
-    var abortFn = function () {
-        abort = true
-    }
+    var abortFn = function() {
+        abort = true;
+    };
 
-    _.on(page, events, abortFn)
+    _.on(page, events, abortFn);
 
-    var initialY = window.pageYOffset
-    var elementY = initialY + element.getBoundingClientRect().top
-    var targetY = document.body.scrollHeight - elementY < window.innerHeight ? document.body.scrollHeight - window.innerHeight : elementY
+    var initialY = window.pageYOffset;
+    var elementY = initialY + element.getBoundingClientRect().top;
+    var targetY = document.body.scrollHeight - elementY < window.innerHeight
+        ? document.body.scrollHeight - window.innerHeight
+        : elementY;
 
     if (options.offset) {
-        targetY += options.offset
+        targetY += options.offset;
     }
 
-    var diff = targetY - initialY
-    var easing = BezierEasing.apply(BezierEasing, options.easing)
-    var start
+    var diff = targetY - initialY;
+    var easing = BezierEasing.apply(BezierEasing, options.easing);
+    var start;
 
-    var done = function () {
-        _.off(page, events, abortFn)
-        if (abort && options.onCancel) options.onCancel()
-        if (!abort && options.onDone) options.onDone()
-    }
+    var done = function() {
+        _.off(page, events, abortFn);
+        if (abort && options.onCancel) options.onCancel();
+        if (!abort && options.onDone) options.onDone();
+    };
 
-    if (!diff) return
+    if (!diff) return;
 
     window.requestAnimationFrame(function step(timestamp) {
-        if (abort) return done()
-        if (!start) start = timestamp
+        if (abort) return done();
+        if (!start) start = timestamp;
 
-        var time = timestamp - start
-        var progress = Math.min(time / duration, 1)
-        progress = easing(progress)
+        var time = timestamp - start;
+        var progress = Math.min(time / duration, 1);
+        progress = easing(progress);
 
-        window.scrollTo(0, initialY + diff * progress)
+        window.scrollTo(0, initialY + diff * progress);
 
         if (time < duration) {
-            window.requestAnimationFrame(step)
+            window.requestAnimationFrame(step);
         } else {
-            done()
+            done();
         }
-    })
-}
+    });
+};
 
 exports.easing = {
-    'ease': [0.25, 0.1, 0.25, 1.0],
-    'linear': [0.00, 0.0, 1.00, 1.0],
-    'ease-in': [0.42, 0.0, 1.00, 1.0],
-    'ease-out': [0.00, 0.0, 0.58, 1.0],
-    'ease-in-out': [0.42, 0.0, 0.58, 1.0]
-}
+    ease: [0.25, 0.1, 0.25, 1.0],
+    linear: [0.00, 0.0, 1.00, 1.0],
+    "ease-in": [0.42, 0.0, 1.00, 1.0],
+    "ease-out": [0.00, 0.0, 0.58, 1.0],
+    "ease-in-out": [0.42, 0.0, 0.58, 1.0]
+};
