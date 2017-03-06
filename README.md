@@ -18,9 +18,9 @@ The package exposes some functions that you can use [programatically](#programat
 With [npm](http://npmjs.org) do:
 
 ```bash
-$ npm install vue-scrollTo --save
+$ npm install vue-scrollto --save
 ```
-
+*Note*: The package used to be named `vue-scrollTo` with a capital T, but due to limited support for mixed case in npm, it has been renamed to a lowercase name.
 ## Usage
 
 ### As a directive
