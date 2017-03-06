@@ -1,8 +1,8 @@
-# vue-scrollTo
-[![npm](https://img.shields.io/npm/v/vue-scrollTo.svg)](https://www.npmjs.com/package/vue-scrollTo)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollTo/blob/master/LICENSE)
+# vue-scrollto
+[![npm](https://img.shields.io/npm/v/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollto/blob/master/LICENSE)
 
-[DEMO](https://rigor789.github.io/vue-scrollTo/)
+[DEMO](https://rigor789.github.io/vue-scrollto/)
 
 This is a [Vue.js](https://github.com/vuejs/vue) directive that
 can scroll to elements on the page.
@@ -26,8 +26,8 @@ $ npm install vue-scrollto --save
 ### As a directive
 ```js
 var Vue = require('vue');
-var vueScrollTo = require('vue-scrollTo');
-Vue.use(vueScrollTo);
+var vueScrollto = require('vue-scrollto');
+Vue.use(vueScrollto);
 ```
 
 ```html
@@ -51,10 +51,10 @@ You can also use an object literal to pass in options:
 ### Programatically
 
 ```js
-var vueScrollTo = require('vue-scrollTo');
+var vueScrollto = require('vue-scrollto');
 
 var options = {
-    easing: vueScrollTo.easing['ease-in'],
+    easing: vueScrollto.easing['ease-in'],
     offset: -60,
     onDone: function() {
       // scrolling is done
@@ -64,7 +64,7 @@ var options = {
     }
 }
 
-vueScrollTo.scrollTo(element, duration, options)
+vueScrollto.scrollTo(element, duration, options)
 ```
 
 #### Customize easing

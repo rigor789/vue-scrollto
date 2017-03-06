@@ -6,12 +6,12 @@ module.exports = {
     },
 
     html: {
-        title: 'vue-scrollTo examples'
+        title: 'vue-scrollto examples'
     },
 
     webpack: {
         output: {
-            publicPath: '/vue-scrollTo/'
+            publicPath: '/vue-scrollto/'
         }
     }
 }
