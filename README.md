@@ -4,12 +4,14 @@
 
 [DEMO](https://rigor789.github.io/vue-scrollto/)
 
-This is a [Vue.js](https://github.com/vuejs/vue) directive that
+This is a [Vue.js 2.x](https://github.com/vuejs/vue) directive that
 can scroll to elements on the page.
 
 Since `v2.1.0` it doesn't require `jQuery` anymore, instead it uses
 `window.requestAnimationFrame` and 
 [bezier-easing](https://github.com/gre/bezier-easing) for easing.
+
+Since `v2.5.0` it supports scrolling inside containers.
  
 The package exposes some functions that you can use [programatically](#programatically). 
 
@@ -41,7 +43,7 @@ Vue.use(vueScrollto);
 You can also use an object literal to pass in options:
 
 ```html
-<a href="#" v-scroll-to="{ el: '#element', duration: 500, easing: 'linear', offset: -200, onDone: onDone, onCancel: onCancel}">
+<a href="#" v-scroll-to="{ el: '#element', container: '#container', duration: 500, easing: 'linear', offset: -200, onDone: onDone, onCancel: onCancel}">
     Scroll to #element
 </a>
 ```
@@ -54,6 +56,7 @@ You can also use an object literal to pass in options:
 var vueScrollto = require('vue-scrollto');
 
 var options = {
+    container: '#container',
     easing: vueScrollto.easing['ease-in'],
     offset: -60,
     onDone: function() {
