@@ -111,6 +111,12 @@ exports.scrollTo = function(element, duration, options) {
         progress = easing(progress);
 
         container.scrollTop = initialY + diff * progress;
+        if (container.tagName.toLowerCase() === "body") {
+            // in firefox body.scrollTop doesn't scroll the page
+            // thus if we are trying to scrollTop on a body tag
+            // we need to scroll on the documentElement
+            document.documentElement.scrollTop = initialY + diff * progress;
+        }
 
         if (time < duration) {
             window.requestAnimationFrame(step);
