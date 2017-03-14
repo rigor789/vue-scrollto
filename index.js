@@ -21,6 +21,18 @@ var _ = exports.utils = {
         for (var i = 0; i < events.length; i++) {
             element.removeEventListener(events[i], handler);
         }
+    },
+    cumulativeOffset: function(element) {
+        var top = 0;
+
+        do {
+            top += element.offsetTop || 0;
+            element = element.offsetParent;
+        } while (element);
+
+        return {
+            top: top
+        };
     }
 };
 
@@ -82,8 +94,9 @@ exports.scrollTo = function(element, duration, options) {
 
     _.on(container, events, abortFn);
 
+    var elementOffsetTop = _.cumulativeOffset(element).top;
     var initialY = container.scrollTop;
-    var elementY = element.offsetTop - container.offsetTop;
+    var elementY = elementOffsetTop - container.offsetTop;
     var targetY = elementY;
 
     if (options.offset) {
