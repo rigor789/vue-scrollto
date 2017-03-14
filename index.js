@@ -38,6 +38,7 @@ exports.install = function(Vue) {
                         : this.value.easing) ||
                         exports.easing["ease"],
                     offset: this.value.offset || 0,
+                    container: this.value.container || "body",
                     onDone: this.value.onDone,
                     onCancel: this.value.onCancel
                 }
@@ -64,9 +65,8 @@ exports.scrollTo = function(element, duration, options) {
         element = _.$(element);
     }
 
-    var page = _.$("html, body");
+    var container = _.$(options.container || "body");
     var events = [
-        "scroll",
         "mousedown",
         "wheel",
         "DOMMouseScroll",
@@ -80,13 +80,11 @@ exports.scrollTo = function(element, duration, options) {
         abort = true;
     };
 
-    _.on(page, events, abortFn);
+    _.on(container, events, abortFn);
 
-    var initialY = window.pageYOffset;
-    var elementY = initialY + element.getBoundingClientRect().top;
-    var targetY = document.body.scrollHeight - elementY < window.innerHeight
-        ? document.body.scrollHeight - window.innerHeight
-        : elementY;
+    var initialY = container.scrollTop;
+    var elementY = element.offsetTop - container.offsetTop;
+    var targetY = elementY;
 
     if (options.offset) {
         targetY += options.offset;
@@ -97,7 +95,7 @@ exports.scrollTo = function(element, duration, options) {
     var start;
 
     var done = function() {
-        _.off(page, events, abortFn);
+        _.off(container, events, abortFn);
         if (abort && options.onCancel) options.onCancel();
         if (!abort && options.onDone) options.onDone();
     };
@@ -112,7 +110,7 @@ exports.scrollTo = function(element, duration, options) {
         var progress = Math.min(time / duration, 1);
         progress = easing(progress);
 
-        window.scrollTo(0, initialY + diff * progress);
+        container.scrollTop = initialY + diff * progress;
 
         if (time < duration) {
             window.requestAnimationFrame(step);

@@ -1,2 +1,2 @@
-*,:after,:before{box-sizing:border-box}body{width:600px;margin:0 auto;font-family:sans-serif}.vue-logo{width:200px;height:auto}button{display:inline-block;border:none;outline:none;padding:10px 15px;background:#4fc08d;border:1px solid #4fc08d;color:#fff;border-radius:20px;margin:10px;cursor:pointer}.center{text-align:center}
+*,:after,:before{box-sizing:border-box}body{width:600px;margin:0 auto;font-family:sans-serif}.vue-logo{width:200px;height:auto}button{display:inline-block;border:none;outline:none;padding:10px 15px;background:#4fc08d;border:1px solid #4fc08d;color:#fff;border-radius:20px;margin:10px;cursor:pointer}.center{text-align:center}#container{max-height:400px;overflow:auto;background:#eee;border:1px solid #999}
 /*# sourceMappingURL=client.css.map*/
