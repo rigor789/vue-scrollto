@@ -96,6 +96,14 @@ exports.scrollTo = function(element, duration, options) {
 
     var elementOffsetTop = _.cumulativeOffset(element).top;
     var initialY = container.scrollTop;
+
+    if (container.tagName.toLowerCase() === "body") {
+        // in firefox body.scrollTop always returns 0
+        // thus if we are trying to get scrollTop on a body tag
+        // we need to get it from the documentElement
+        initialY = initialY || document.documentElement.scrollTop;
+    }
+
     var elementY = elementOffsetTop - container.offsetTop;
     var targetY = elementY;
 
