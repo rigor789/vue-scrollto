@@ -110,8 +110,8 @@ var index = function bezier (mX1, mY1, mX2, mY2) {
 };
 
 var easings = {
-    "ease": [0.25, 0.1, 0.25, 1.0],
-    "linear": [0.00, 0.0, 1.00, 1.0],
+    ease: [0.25, 0.1, 0.25, 1.0],
+    linear: [0.00, 0.0, 1.00, 1.0],
     "ease-in": [0.42, 0.0, 1.00, 1.0],
     "ease-out": [0.00, 0.0, 0.58, 1.0],
     "ease-in-out": [0.42, 0.0, 0.58, 1.0]
@@ -119,7 +119,7 @@ var easings = {
 
 var _ = {
     $: function $(selector) {
-        if (typeof selector !== 'string') {
+        if (typeof selector !== "string") {
             return selector;
         }
         return document.querySelector(selector);
@@ -189,45 +189,6 @@ var scroller = function scroller() {
 
     var progress = void 0; // progress
 
-
-    function scrollTo(target, _duration) {
-        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-        if ((typeof _duration === 'undefined' ? 'undefined' : _typeof(_duration)) === 'object') {
-            options = _duration;
-        } else if (typeof _duration === 'number') {
-            options.duration = _duration;
-        }
-        console.log(options);
-        console.log();
-        element = _.$(target);
-        container = _.$(options.container || 'body');
-        duration = options.duration || 500;
-        easing = options.easing || 'ease';
-        offset = options.offset || 0;
-        onDone = options.onDone || false;
-        onCancel = options.onCancel || false;
-
-        initialY = scrollTop(container);
-        targetY = _.cumulativeOffset(element).top - container.offsetTop + offset;
-
-        abort = false;
-
-        diff = targetY - initialY;
-
-        if (typeof easing === 'string') {
-            easing = easings[easing] || easings['ease'];
-        }
-
-        easingFn = index.apply(index, easing);
-
-        if (!diff) return;
-
-        _.on(container, abortEvents, abortFn);
-
-        window.requestAnimationFrame(step);
-    }
-
     function scrollTop(container) {
         var scrollTop = container.scrollTop;
 
@@ -274,6 +235,43 @@ var scroller = function scroller() {
         }
     }
 
+    function scrollTo(target, _duration) {
+        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+        if ((typeof _duration === "undefined" ? "undefined" : _typeof(_duration)) === "object") {
+            options = _duration;
+        } else if (typeof _duration === "number") {
+            options.duration = _duration;
+        }
+
+        element = _.$(target);
+        container = _.$(options.container || "body");
+        duration = options.duration || 500;
+        easing = options.easing || "ease";
+        offset = options.offset || 0;
+        onDone = options.onDone || false;
+        onCancel = options.onCancel || false;
+
+        initialY = scrollTop(container);
+        targetY = _.cumulativeOffset(element).top - container.offsetTop + offset;
+
+        abort = false;
+
+        diff = targetY - initialY;
+
+        if (typeof easing === "string") {
+            easing = easings[easing] || easings["ease"];
+        }
+
+        easingFn = index.apply(index, easing);
+
+        if (!diff) return;
+
+        _.on(container, abortEvents, abortFn);
+
+        window.requestAnimationFrame(step);
+    }
+
     return scrollTo;
 };
 
@@ -282,7 +280,7 @@ var _scroller = scroller();
 function handleClick(e) {
     e.preventDefault();
 
-    if (typeof this.value === 'string') {
+    if (typeof this.value === "string") {
         return _scroller(this.value);
     }
     _scroller(this.value.el || this.value.element, this.value);
@@ -300,7 +298,7 @@ var VueScrollTo$1 = {
 };
 
 var install = function install(Vue) {
-    Vue.directive('scroll-to', VueScrollTo$1);
+    Vue.directive("scroll-to", VueScrollTo$1);
     Vue.prototype.$scrollTo = VueScrollTo$1.scrollTo;
 };
 

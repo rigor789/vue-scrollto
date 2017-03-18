@@ -27,18 +27,27 @@ It even knows when the user interrupts, and doesn't force scrolling that would r
 
 This package is available on npm.
 
+<p class="warning">
+    If you used this package before, please ensure you are using the right one, since it has been renamed from `vue-scrollTo` to `vue-scrollto`
+</p>
+
 Using npm:
 ```bash
 npm install --save vue-scrollto
 ```
 
-Alternatively you can use yarn:
+Using yarn:
 ```bash
 yarn add vue-scrollto
 ```
 
-<p class="warning">
-    If you used this package before, please ensure you are using the right one, since it has been renamed from `vue-scrollTo` to `vue-scrollto`
+Directly include it in html:
+```html
+<script src="https://unpkg.com/vue@2.2.4"></script>
+<script src="https://unpkg.com/vue-scrollto@2.6.0"></script>
+```
+<p class="tip">
+    When including it in html, it will automatically call `Vue.use` and also set a `VueScrollTo` variable that you can use!
 </p>
 
 

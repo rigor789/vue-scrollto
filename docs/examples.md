@@ -9,6 +9,8 @@ const VueScrollTo = require('vue-scrollto')
 Vue.use(VueScrollTo)
 ```
 
+<iframe width="100%" height="300" src="//jsfiddle.net/rigor789/862crkkp/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
 ## Using string literals
 
 ```html
