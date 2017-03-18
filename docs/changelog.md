@@ -1,3 +1,15 @@
+## [v2.6.1](https://github.com/rigor789/vue-scrollto/commit/8b97dac5349546bef24e836787653a6124509a83) (2017-3-18)
+
+### Fixes
+- Removed accidental `console.log`
+
+## [v2.6.0](https://github.com/rigor789/vue-scrollto/commit/c68fdd2632680fd78876047ea087ca7cbe9ae3c5) (2017-3-18)
+
+### Changes
+- Cleaned up repository
+- Added rollup
+- Added better docs
+
 ## [v2.5.4](https://github.com/rigor789/vue-scrollto/commit/919eb807bae8bf6eb201462d4f9923f7bc6c56b5) (2017-3-15)
 
 ### Bug fixes

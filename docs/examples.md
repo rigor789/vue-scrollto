@@ -9,8 +9,6 @@ const VueScrollTo = require('vue-scrollto')
 Vue.use(VueScrollTo)
 ```
 
-<iframe width="100%" height="300" src="//jsfiddle.net/rigor789/862crkkp/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
 ## Using string literals
 
 ```html
@@ -20,6 +18,13 @@ Vue.use(VueScrollTo)
 
 <h1 id="element">Hi. I'm element</h1>
 ```
+
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/egh95a0q/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
 
 ## Using object literals
 
@@ -35,6 +40,14 @@ or
 </button>
 ```
 
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/efs4s9wa/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
+
+
 #### Using a different duration
 
 ```html
@@ -42,6 +55,13 @@ or
     Scroll to #element
 </button>
 ```
+
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/jcjc4mxs/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
 
 #### Using a different easing
 
@@ -51,17 +71,31 @@ or
 </button>
 ```
 
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/fhnb6gmh/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
+
 #### Using custom easing combined with duration
 
 ```html
 <button v-scroll-to="{ 
         el: '#element',
-        easing: [.6, -.80, .30, 1.9],
+        easing: [.6, .80, .30, 1.9],
         duration: 2000 
     }">
     Scroll to #element
 </button>
 ```
+
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/7xvxm7s9/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
 
 #### Using offset
 
@@ -70,6 +104,14 @@ or
     Scroll to 200px below #element 
 </button>
 ```
+
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/dmnmcpwj/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
+
 
 #### Adding callbacks
 ```html
@@ -86,12 +128,20 @@ or
 export default {
     methods: {
         onDone() {
-            // do something
+            alert('done')
         },
         
         onCancel() {
-            // do something
+            alert('canceled')
+            console.log(e)
         }
     }
 }
 ```
+
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/rigor789/2mfg8tda/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
