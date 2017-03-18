@@ -42,7 +42,7 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "index.js": [
+    "src/**.js": [
       "prettier --write --tab-width=4",
       "git add"
     ]
