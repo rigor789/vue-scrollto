@@ -2,7 +2,7 @@
   "name": "vue-scrollto",
   "version": "2.5.4",
   "description": "Adds a directive that listens for click events and scrolls to elements.",
-  "main": "index.js",
+  "main": "vue-scrollto.js",
   "keywords": [
     "vue",
     "vuejs",
@@ -26,11 +26,17 @@
     "bezier-easing": "^2.0.3"
   },
   "devDependencies": {
+    "babel-preset-es2015-rollup": "^3.0.0",
     "lint-staged": "^3.3.1",
     "pre-commit": "^1.2.2",
-    "prettier": "^0.19.0"
+    "prettier": "^0.19.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-commonjs": "^8.0.2"
   },
   "scripts": {
+    "build": "rollup -c",
     "build-examples": "vue build examples.vue --prod --dist example --config examples.config.js",
     "publish-examples": "git subtree push --prefix example origin gh-pages",
     "lint-staged": "lint-staged"

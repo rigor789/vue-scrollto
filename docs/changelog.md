@@ -1,0 +1,34 @@
+## [v2.5.4](https://github.com/rigor789/vue-scrollto/commit/919eb807bae8bf6eb201462d4f9923f7bc6c56b5) (2017-3-15)
+
+### Bug fixes
+- Fixed jumping to the top of the page in firefox when scrolling on the `body` tag. [6f5615e](https://github.com/rigor789/vue-scrollto/commit/6f5615ebe8602bf766e1401d33c6b1c24a961db2)
+    
+## [v2.5.3](https://github.com/rigor789/vue-scrollto/commit/1b6ee1380401545897f7403a720d75d97665c219) (2017-3-14)
+
+### Additions
+- Added calculations for scrolling inside positioned elements. [7f730e8](https://github.com/rigor789/vue-scrollto/commit/7f730e82cbe0d585aa7ebd783eaf9761bc4add28)
+    
+## [v2.5.2](https://github.com/rigor789/vue-scrollto/commit/d5aaf39b5c3584f40b298d1279d2a94a4dd9c940) (2017-3-14)
+
+### Bug fixes
+- Fixed firefox not scrolling on `body` tag. [575d90a](https://github.com/rigor789/vue-scrollto/commit/575d90ab3d60ae6fec9027fea1f72a3ffacd440b)
+
+## [v2.5.1](https://github.com/rigor789/vue-scrollto/commit/e0970507d51529583e237aa4c69dcede4896af73) (2017-3-14)
+
+### Additions
+- Added examples for using the `container` option
+
+## [v2.5.0](https://github.com/rigor789/vue-scrollto/commit/7abe2bb111964f173b003208c0f28eb3b6e209fd) (2017-3-14)
+
+### Additions
+- Added `container` option to allow scrolling inside different containers
+
+## [v2.4.2](https://github.com/rigor789/vue-scrollto/commit/aa1cca9afc95adce564fbd976eca369aaa704917) (2017-3-6)
+
+### Changes
+- Updated the repository link in `package.json`
+
+## [v2.4.1](https://github.com/rigor789/vue-scrollto/commit/bdbc6409c72ba0217348aa4cc5d9c93df9441a30) (2017-3-6)
+
+### Changes
+- Renamed package from `vue-scrollTo` to `vue-scrollto` due to npm's limited support for capital letters in package names.
