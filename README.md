@@ -1,59 +1,100 @@
 # vue-scrollto
+
+[![Vue 2.x](https://img.shields.io/badge/Vue-2.x-brightgreen.svg)](https://vuejs.org/v2/guide/)
 [![npm](https://img.shields.io/npm/v/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
+[![npm-downloades](https://img.shields.io/npm/dm/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollto/blob/master/LICENSE)
 
-[DEMO](https://rigor789.github.io/vue-scrollto/)
+[DEMO](https://rigor789.github.io/vue-scrollto/#/examples)
 
-This is a [Vue.js 2.x](https://github.com/vuejs/vue) directive that
-can scroll to elements on the page.
+Scrolling to elements was never this easy!
 
-Since `v2.1.0` it doesn't require `jQuery` anymore, instead it uses
-`window.requestAnimationFrame` and 
-[bezier-easing](https://github.com/gre/bezier-easing) for easing.
+This is for `vue 2.x`
 
-Since `v2.5.0` it supports scrolling inside containers.
- 
-The package exposes some functions that you can use [programatically](#programatically). 
+For `vue 1.x` use `v...` but keep in mind that the old version depends on `jquery`.
 
-## Install
+## Under the hood
 
-With [npm](http://npmjs.org) do:
+`vue-scrollto` uses `window.requestAnimationFrame` to perform the animations, thus giving the best performance.
 
+Easing is done using [bezier-easing]() - A well tested easing micro-library.
+
+<p class="tip">
+It even knows when the user interrupts, and doesn't force scrolling that would result in bad UX.
+</p>
+
+## Installing
+
+This package is available on npm.
+
+<p class="warning">
+    If you used this package before, please ensure you are using the right one, since it has been renamed from `vue-scrollTo` to `vue-scrollto`
+</p>
+
+Using npm:
 ```bash
-$ npm install vue-scrollto --save
+npm install --save vue-scrollto
 ```
-*Note*: The package used to be named `vue-scrollTo` with a capital T, but due to limited support for mixed case in npm, it has been renamed to a lowercase name.
+
+Using yarn:
+```bash
+yarn add vue-scrollto
+```
+
+Directly include it in html:
+```html
+<script src="https://unpkg.com/vue@2.2.4"></script>
+<script src="https://unpkg.com/vue-scrollto@2.6.0"></script>
+```
+<p class="tip">
+    When including it in html, it will automatically call `Vue.use` and also set a `VueScrollTo` variable that you can use!
+</p>
+
+
 ## Usage
 
-### As a directive
+vue-scrollto can be used either as a vue directive, or programatically from your javascript.
+
+### As a vue directive
 ```js
 var Vue = require('vue');
-var vueScrollto = require('vue-scrollto');
-Vue.use(vueScrollto);
+var VueScrollTo = require('vue-scrollto');
+
+Vue.use(VueScrollTo)
 ```
 
 ```html
 <a href="#" v-scroll-to="'#element'">Scroll to #element</a>
 
 <div id="element">
-    Hi. I'm element.
+    Hi. I'm #element.
 </div>
 ```
 
-You can also use an object literal to pass in options:
+If you need to customize the scrolling options, you can pass in an object literal to the directive:
 
 ```html
-<a href="#" v-scroll-to="{ el: '#element', container: '#container', duration: 500, easing: 'linear', offset: -200, onDone: onDone, onCancel: onCancel}">
+<a href="#" v-scroll-to="{
+     el: '#element',
+     container: '#container',
+     duration: 500,
+     easing: 'linear',
+     offset: -200,
+     onDone: onDone,
+     onCancel: onCancel
+ }">
     Scroll to #element
 </a>
 ```
 
-*Note on easing:* you can use the [easings included](#customize-easing), or you can specify your own in the form of `easing: [.6, -.80, .30, 1.9]`
+<p class="tip">
+    Check out the [Options Section](#options) for more details about the available options.
+</p>
 
 ### Programatically
 
 ```js
-var vueScrollto = require('vue-scrollto');
+var VueScrollTo = require('vue-scrollto');
 
 var options = {
     container: '#container',
@@ -67,16 +108,50 @@ var options = {
     }
 }
 
-vueScrollto.scrollTo(element, duration, options)
+VueScrollTo.scrollTo(element, duration, options)
 ```
 
-#### Customize easing
+## Options
 
-Easing is done with [bezier-easing](https://github.com/gre/bezier-easing)
-so you can pass your own values into
-`options.easing`. It expects an array with exactly 4 values.
+#### el / element 
+The element you want to scroll to.
 
-Here are the easings included by default: 
+#### container
+The container that has to be scrolled. 
+
+*Default:* `body`
+
+#### duration
+The duration (in milliseconds) of the scrolling animation. 
+
+*Default:* `1000` 
+
+#### easing 
+The easing to be used when animating. Read more in the [Easing section](#easing). 
+
+*Default:* `ease`
+
+#### offset 
+The offset that should be applied when scrolling. 
+
+*Default:* `0`
+
+#### onDone 
+A callback function that should be called when scrolling has ended. 
+
+*Default:* `noop`
+
+#### onCancel 
+A callback function that should be called when scrolling has been aborted by the user (user scrolled, clicked etc.).
+ 
+*Default:* `noop`
+
+
+## Easing
+
+Easing is calculated using [bezier-easing]() so you can pass your own values into `options.easing` in the form of an array with 4 values.
+
+vue-scrollto defines the following easings that you can use:
 ```js
 exports.easing = {
     'ease': [0.25, 0.1, 0.25, 1.0],
