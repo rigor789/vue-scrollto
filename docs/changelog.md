@@ -1,3 +1,6 @@
+## v2.6.2 (2017-3-18)
+- Pushed updated docs to npm
+
 ## [v2.6.1](https://github.com/rigor789/vue-scrollto/commit/8b97dac5349546bef24e836787653a6124509a83) (2017-3-18)
 
 ### Fixes
