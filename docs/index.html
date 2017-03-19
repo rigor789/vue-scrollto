@@ -10,6 +10,8 @@
 <body>
 <div id="app"></div>
 <script src="https://unpkg.com/docute@2/dist/docute.js"></script>
+<script src="https://unpkg.com/vue-scrollto@2.6.1"></script>
+<script src="landing.js"></script>
 <script>
     docute.init({
         repo: 'rigor789/vue-scrollto',
@@ -19,9 +21,13 @@
 
         debug: true,
 
+        plugins: [
+            landing()
+        ],
+
         nav: [
             {title: 'Home', path: '/'},
-            {title: 'Getting Started', path: '/docs', source: 'https://raw.githubusercontent.com/rigor789/vue-scrollto/master/README.md'},
+            {title: 'Docs', path: '/docs', source: 'https://raw.githubusercontent.com/rigor789/vue-scrollto/master/README.md'},
             {title: 'Examples', path: '/examples', $source: 'examples.html'},
             {title: 'Changelog', path: '/changelog'},
         ]

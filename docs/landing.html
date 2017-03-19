@@ -1,84 +1,194 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <title>vue-scrollto examples</title>
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+<div class="landing-container">
+    <img class="vue-lgoo" src="https://raw.githubusercontent.com/vuejs/art/master/logo.png" alt="Vue logo">
+    <h1>vue-scrollto</h1>
+    <h3>Scrolling to elements was never this easy!</h3>
 
-        html, body {
-            font-family: sans-serif;
-        }
+    <ul class="features">
+        <li>Scroll to any element on page</li>
+        <li>Scroll inside any container</li>
+        <li>Customize how scrolling behaves</li>
+    </ul>
 
-        .vue-logo {
-            width: 200px;
-            height: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            outline: none;
-            padding: 10px 30px;
-            /*background: #4fc08d;*/
-            background: white;
-            /*border: 1px solid #4fc08d;*/
-            border: 1px solid #ccc;
-            color: #333;
-            border-radius: 20px;
-            margin: 10px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            border-color: #4fc08d;
-            color: #4fc08d;
-            text-decoration: none;
-        }
-
-        #app {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        h3 {
-            color: #999999;
-        }
-
-        .features {
-            text-align: left;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-<div id="app">
-    <div class="center">
-        <h1>vue-scrollto</h1>
-        <h3>Scrolling to elements was never this easy!</h3>
-
-        <ul class="features">
-            <li>Scroll to any element on page</li>
-            <li>Scroll inside any container</li>
-            <li>Customize how scrolling behaves</li>
-        </ul>
-
-        <p>
-            <a href="https://github.com/rigor789/vue-scrollto" class="btn">Github</a>
-            <a href="#/docs" class="btn">Docs</a>
-        </p>
-    </div>
+    <p>
+        <a href="https://github.com/rigor789/vue-scrollto" class="btn">Github</a>
+        <a href="#/docs" class="btn">Docs</a>
+    </p>
 </div>
-</body>
-</html>
+
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #4fc08d;
+        color: white;
+    }
+
+    .vue-lgoo {
+        width: 200px;
+        height: auto;
+    }
+    .landing-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 75vh;
+    }
+
+    .landing-container h1 {
+        font-size: 40px;
+    }
+
+    .landing-container .features {
+        margin: 20px 0;
+        font-size: 16px;
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+        outline: none;
+        padding: 10px 30px;
+
+        margin: 10px;
+
+        border: 1px solid white;
+        border-radius: 20px;
+
+        color: white;
+
+        transition: all .2s ease;
+    }
+
+    .btn:hover {
+        color: #42b983;
+        background: white;
+    }
+
+    .section-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .section-container:nth-of-type(2n) {
+        background: #42b983;
+    }
+
+    .roof {
+        align-self: center;
+        width: 0;
+        height: 0;
+        border-left: 15vw solid transparent;
+        border-right: 15vw solid transparent;
+        border-bottom: 10vw solid white;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: -10vw;
+
+        cursor: pointer;
+        transition: border-bottom-color .4s ease;
+    }
+
+    .roof:hover {
+        border-bottom-color: #42b983;
+    }
+
+    .roof:hover:after {
+        color: white;
+    }
+
+    .roof:after {
+        transition: color .4s ease;
+        content: 'Click me';
+        min-width: 20vw;
+        text-align: center;
+        position: relative;
+        top: 5vw;
+        font-size: 20px;
+        color: #42b983;
+
+        animation: blink 2s infinite;
+    }
+
+    .section {
+        align-self: center;
+        background: white;
+        width: 30vw;
+        height: 30vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        position: relative;
+        top: -10vw;
+    }
+
+    .window {
+        background: #4fc08d;
+        width: 3vw;
+        height: 3vw;
+    }
+
+    .window--crooked_right {
+        transform: rotate(10deg);
+    }
+
+    .window--crooked_left {
+        transform: rotate(10deg);
+    }
+
+    .spin {
+        animation: spin 1s;
+    }
+
+    #element {
+        text-align: center;
+        background: #57d69d;
+        padding: 10px;
+        z-index: 1;
+    }
+
+    #element h1{
+        font-size: 3vw;
+    }
+
+    .copy {
+        text-align: center;
+        position: relative;
+        top: -5vw;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: .5
+        }
+        50% {
+            opacity: 1
+        }
+        100% {
+            opacity: .5
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg) scale(1);
+        }
+        50% {
+            transform: rotate(360deg) scale(1);
+        }
+        75% {
+            transform: scale(2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
