@@ -61,9 +61,10 @@ function buildLanding() {
             easing: 'ease-in-out',
             onDone() {
                 let element = document.getElementById('element')
-
                 element.classList.remove('spin')
-                element.classList.add('spin')
+                let element_clone = element.cloneNode(true)
+                element.parentNode.replaceChild(element_clone, element)
+                element_clone.classList.add('spin')
             }
         })
     })
