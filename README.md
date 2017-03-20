@@ -11,7 +11,7 @@ Scrolling to elements was never this easy!
 
 This is for `vue 2.x`
 
-For `vue 1.x` use `v...` but keep in mind that the old version depends on `jquery`.
+For `vue 1.x` use `vue-scrollTo@1.0.1` (note the capital T) but keep in mind that the old version depends on `jquery`.
 
 ## Under the hood
 
@@ -44,7 +44,7 @@ yarn add vue-scrollto
 Directly include it in html:
 ```html
 <script src="https://unpkg.com/vue@2.2.4"></script>
-<script src="https://unpkg.com/vue-scrollto@2.6.0"></script>
+<script src="https://unpkg.com/vue-scrollto"></script>
 ```
 <p class="tip">
     When including it in html, it will automatically call `Vue.use` and also set a `VueScrollTo` variable that you can use!

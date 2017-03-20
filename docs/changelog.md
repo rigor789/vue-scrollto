@@ -1,3 +1,6 @@
+## v2.6.3 (2017-3-20)
+- Added update to directive declaration, so options can be changed dynamically.
+
 ## v2.6.2 (2017-3-18)
 - Pushed updated docs to npm
 
