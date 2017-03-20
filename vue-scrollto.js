@@ -277,21 +277,29 @@ var scroller = function scroller() {
 
 var _scroller = scroller();
 
+var bindings = {}; // store binding data
+
 function handleClick(e) {
     e.preventDefault();
+    var ctx = bindings[this];
 
-    if (typeof this.value === "string") {
-        return _scroller(this.value);
+    if (typeof ctx.value === "string") {
+        return _scroller(ctx.value);
     }
-    _scroller(this.value.el || this.value.element, this.value);
+    _scroller(ctx.value.el || ctx.value.element, ctx.value);
 }
 
 var VueScrollTo$1 = {
     bind: function bind(el, binding) {
-        _.on(el, "click", handleClick.bind(binding));
+        bindings[el] = binding;
+        _.on(el, "click", handleClick);
     },
     unbind: function unbind(el) {
+        delete bindings[el];
         _.off(el, "click", handleClick);
+    },
+    update: function update(el, binding) {
+        bindings[el] = binding;
     },
 
     scrollTo: _scroller
