@@ -1,3 +1,6 @@
+## v2.6.4 (2017-3-22)
+- Fixed #15 - elements would share their bindings
+
 ## v2.6.3 (2017-3-20)
 - Added update to directive declaration, so options can be changed dynamically.
 
