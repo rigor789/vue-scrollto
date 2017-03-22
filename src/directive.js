@@ -1,11 +1,40 @@
 import scrollTo from "./scrollTo";
 import _ from "./utils";
 
-const bindings = {}; // store binding data
+let bindings = []; // store binding data
+
+function deleteBinding(el) {
+    for (let i = 0; i < bindings.length; ++i) {
+        if (bindings[i].el === el) {
+            bindings.splice(i, 1);
+            return true;
+        }
+    }
+    return false;
+}
+
+function getBinding(el) {
+    let binding = bindings.find(entry => {
+        return entry.el == el;
+    });
+
+    if (binding) {
+        return binding;
+    }
+
+    bindings.push(
+        binding = {
+            el: el,
+            binding: {}
+        }
+    );
+
+    return binding;
+}
 
 function handleClick(e) {
     e.preventDefault();
-    let ctx = bindings[this];
+    let ctx = getBinding(this).binding;
 
     if (typeof ctx.value === "string") {
         return scrollTo(ctx.value);
@@ -15,15 +44,16 @@ function handleClick(e) {
 
 export default {
     bind(el, binding) {
-        bindings[el] = binding;
+        getBinding(el).binding = binding;
         _.on(el, "click", handleClick);
     },
     unbind(el) {
-        delete bindings[el];
+        deleteBinding(el);
         _.off(el, "click", handleClick);
     },
     update(el, binding) {
-        bindings[el] = binding;
+        getBinding(el).binding = binding;
     },
-    scrollTo
+    scrollTo,
+    bindings
 };

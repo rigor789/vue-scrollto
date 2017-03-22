@@ -277,11 +277,38 @@ var scroller = function scroller() {
 
 var _scroller = scroller();
 
-var bindings = {}; // store binding data
+var bindings = []; // store binding data
+
+function deleteBinding(el) {
+    for (var i = 0; i < bindings.length; ++i) {
+        if (bindings[i].el === el) {
+            bindings.splice(i, 1);
+            return true;
+        }
+    }
+    return false;
+}
+
+function getBinding(el) {
+    var binding = bindings.find(function (entry) {
+        return entry.el == el;
+    });
+
+    if (binding) {
+        return binding;
+    }
+
+    bindings.push(binding = {
+        el: el,
+        binding: {}
+    });
+
+    return binding;
+}
 
 function handleClick(e) {
     e.preventDefault();
-    var ctx = bindings[this];
+    var ctx = getBinding(this).binding;
 
     if (typeof ctx.value === "string") {
         return _scroller(ctx.value);
@@ -291,18 +318,19 @@ function handleClick(e) {
 
 var VueScrollTo$1 = {
     bind: function bind(el, binding) {
-        bindings[el] = binding;
+        getBinding(el).binding = binding;
         _.on(el, "click", handleClick);
     },
     unbind: function unbind(el) {
-        delete bindings[el];
+        deleteBinding(el);
         _.off(el, "click", handleClick);
     },
     update: function update(el, binding) {
-        bindings[el] = binding;
+        getBinding(el).binding = binding;
     },
 
-    scrollTo: _scroller
+    scrollTo: _scroller,
+    bindings: bindings
 };
 
 var install = function install(Vue) {
