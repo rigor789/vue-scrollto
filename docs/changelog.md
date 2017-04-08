@@ -1,3 +1,6 @@
+## v2.6.5 (2017-4-8)
+- Added warnings when scrolling to elements that don't exist.
+
 ## v2.6.4 (2017-3-22)
 - Fixed #15 - elements would share their bindings
 

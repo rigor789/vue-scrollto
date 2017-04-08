@@ -37,8 +37,6 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "build-examples": "vue build examples.vue --prod --dist example --config examples.config.js",
-    "publish-examples": "git subtree push --prefix example origin gh-pages",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {

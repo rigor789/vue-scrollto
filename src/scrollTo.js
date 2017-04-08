@@ -92,6 +92,14 @@ const scroller = () => {
         }
 
         element = _.$(target);
+
+        if (!element) {
+            return console.warn(
+                "[vue-scrollto warn]: Trying to scroll to an element that is not on the page: " +
+                    target
+            );
+        }
+
         container = _.$(options.container || "body");
         duration = options.duration || 500;
         easing = options.easing || "ease";
