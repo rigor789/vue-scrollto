@@ -98,7 +98,7 @@ var VueScrollTo = require('vue-scrollto');
 
 var options = {
     container: '#container',
-    easing: vueScrollto.easing['ease-in'],
+    easing: 'ease-in',
     offset: -60,
     onDone: function() {
       // scrolling is done
@@ -109,6 +109,9 @@ var options = {
 }
 
 VueScrollTo.scrollTo(element, duration, options)
+
+// or alternatively inside your components you can use
+this.$scrollTo(element, duration, options)
 ```
 
 ## Options
@@ -149,11 +152,11 @@ A callback function that should be called when scrolling has been aborted by the
 
 ## Easing
 
-Easing is calculated using [bezier-easing]() so you can pass your own values into `options.easing` in the form of an array with 4 values.
+Easing is calculated using [bezier-easing]() so you can pass your own values into `options.easing` in the form of an array with 4 values, or you can use any of the default easings by referencing their names as strings (`ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out`).
 
-vue-scrollto defines the following easings that you can use:
+vue-scrollto uses the following values for the default easings:
 ```js
-exports.easing = {
+let easings = {
     'ease': [0.25, 0.1, 0.25, 1.0],
     'linear': [0.00, 0.0, 1.00, 1.0],
     'ease-in': [0.42, 0.0, 1.00, 1.0],

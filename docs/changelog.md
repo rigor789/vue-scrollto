@@ -1,3 +1,6 @@
+## v2.6.6 (2017-4-11)
+- Updated documentation for programmatic usage and easings.
+
 ## v2.6.5 (2017-4-8)
 - Added warnings when scrolling to elements that don't exist.
 
