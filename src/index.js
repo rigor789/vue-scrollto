@@ -5,7 +5,7 @@ const install = function(Vue) {
     Vue.prototype.$scrollTo = VueScrollTo.scrollTo;
 };
 
-if (window.Vue) {
+if (typeof window !== "undefined" && window.Vue) {
     window.VueScrollTo = VueScrollTo;
     Vue.use(install);
 }
