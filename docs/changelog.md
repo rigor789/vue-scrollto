@@ -1,3 +1,6 @@
+## v2.6.7 (2017-4-18)
+- Added SSR support.
+
 ## v2.6.6 (2017-4-11)
 - Updated documentation for programmatic usage and easings.
 
