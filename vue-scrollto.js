@@ -247,7 +247,7 @@ var scroller = function scroller() {
         element = _.$(target);
 
         if (!element) {
-            return console.warn('[vue-scrollto warn]: Trying to scroll to an element that is not on the page: ' + target);
+            return console.warn("[vue-scrollto warn]: Trying to scroll to an element that is not on the page: " + target);
         }
 
         container = _.$(options.container || "body");
@@ -343,7 +343,7 @@ var install = function install(Vue) {
     Vue.prototype.$scrollTo = VueScrollTo$1.scrollTo;
 };
 
-if (window.Vue) {
+if (typeof window !== "undefined" && window.Vue) {
     window.VueScrollTo = VueScrollTo$1;
     Vue.use(install);
 }
