@@ -127,7 +127,7 @@ The container that has to be scrolled.
 #### duration
 The duration (in milliseconds) of the scrolling animation. 
 
-*Default:* `1000` 
+*Default:* `500` 
 
 #### easing 
 The easing to be used when animating. Read more in the [Easing section](#easing). 
