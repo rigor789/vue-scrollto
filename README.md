@@ -61,6 +61,29 @@ var Vue = require('vue');
 var VueScrollTo = require('vue-scrollto');
 
 Vue.use(VueScrollTo)
+
+// You can also pass in the default options
+Vue.use(VueScrollTo, {
+     container: "body",
+     duration: 500,
+     easing: "ease",
+     offset: 0,
+     onDone: false,
+     onCancel: false
+ })
+```
+
+In case you are using the browser version (directly including the script on your page), you can set the defaults with
+ 
+```
+VueScrollTo.setDefaults({
+    container: "body",
+    duration: 500,
+    easing: "ease",
+    offset: 0,
+    onDone: false,
+    onCancel: false
+})
 ```
 
 ```html

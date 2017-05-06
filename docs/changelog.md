@@ -1,3 +1,7 @@
+## v2.6.8 (2017-5-6)
+- Added default options setting.
+- Fixed documentation,
+
 ## v2.6.7 (2017-4-18)
 - Added SSR support.
 
