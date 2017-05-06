@@ -162,6 +162,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var abortEvents = ["mousedown", "wheel", "DOMMouseScroll", "mousewheel", "keyup", "touchmove"];
 
+var defaults$$1 = {
+    container: 'body',
+    duration: 500,
+    easing: "ease",
+    offset: 0,
+    onDone: false,
+    onCancel: false
+};
+
+function setDefaults(options) {
+    defaults$$1 = Object.assign({}, defaults$$1, options);
+}
+
 var scroller = function scroller() {
     var element = void 0; // element to scroll to
     var container = void 0; // container to scroll
@@ -250,12 +263,12 @@ var scroller = function scroller() {
             return console.warn("[vue-scrollto warn]: Trying to scroll to an element that is not on the page: " + target);
         }
 
-        container = _.$(options.container || "body");
-        duration = options.duration || 500;
-        easing = options.easing || "ease";
-        offset = options.offset || 0;
-        onDone = options.onDone || false;
-        onCancel = options.onCancel || false;
+        container = _.$(options.container || defaults$$1.container);
+        duration = options.duration || defaults$$1.duration;
+        easing = options.easing || defaults$$1.easing;
+        offset = options.offset || defaults$$1.offset;
+        onDone = options.onDone || defaults$$1.onDone;
+        onCancel = options.onCancel || defaults$$1.onCancel;
 
         initialY = scrollTop(container);
         targetY = _.cumulativeOffset(element).top - container.offsetTop + offset;
@@ -338,13 +351,15 @@ var VueScrollTo$1 = {
     bindings: bindings
 };
 
-var install = function install(Vue) {
+var install = function install(Vue, options) {
+    if (options) setDefaults(options);
     Vue.directive("scroll-to", VueScrollTo$1);
     Vue.prototype.$scrollTo = VueScrollTo$1.scrollTo;
 };
 
 if (typeof window !== "undefined" && window.Vue) {
     window.VueScrollTo = VueScrollTo$1;
+    window.VueScrollTo.setDefaults = setDefaults;
     Vue.use(install);
 }
 

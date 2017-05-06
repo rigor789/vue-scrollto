@@ -11,6 +11,19 @@ const abortEvents = [
     "touchmove"
 ];
 
+let defaults = {
+    container: "body",
+    duration: 500,
+    easing: "ease",
+    offset: 0,
+    onDone: false,
+    onCancel: false
+};
+
+export function setDefaults(options) {
+    defaults = Object.assign({}, defaults, options);
+}
+
 const scroller = () => {
     let element; // element to scroll to
     let container; // container to scroll
@@ -100,12 +113,12 @@ const scroller = () => {
             );
         }
 
-        container = _.$(options.container || "body");
-        duration = options.duration || 500;
-        easing = options.easing || "ease";
-        offset = options.offset || 0;
-        onDone = options.onDone || false;
-        onCancel = options.onCancel || false;
+        container = _.$(options.container || defaults.container);
+        duration = options.duration || defaults.duration;
+        easing = options.easing || defaults.easing;
+        offset = options.offset || defaults.offset;
+        onDone = options.onDone || defaults.onDone;
+        onCancel = options.onCancel || defaults.onCancel;
 
         initialY = scrollTop(container);
         targetY = _.cumulativeOffset(element).top -
