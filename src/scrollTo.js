@@ -16,6 +16,7 @@ let defaults = {
     duration: 500,
     easing: "ease",
     offset: 0,
+    cancelable: true,
     onDone: false,
     onCancel: false
 };
@@ -30,6 +31,7 @@ const scroller = () => {
     let duration; // duration of the scrolling
     let easing; // easing to be used when scrolling
     let offset; // offset to be added (subtracted)
+    let cancelable; // indicates if user can cancel the scroll or not.
     let onDone; // callback when scrolling is done
     let onCancel; // callback when scrolling is canceled / aborted
 
@@ -41,6 +43,7 @@ const scroller = () => {
 
     let abortEv; // event that aborted scrolling
     let abortFn = e => {
+        if (!cancelable) return;
         abortEv = e;
         abort = true;
     };
@@ -117,6 +120,7 @@ const scroller = () => {
         duration = options.duration || defaults.duration;
         easing = options.easing || defaults.easing;
         offset = options.offset || defaults.offset;
+        cancelable = options.cancelable || defaults.cancelable;
         onDone = options.onDone || defaults.onDone;
         onCancel = options.onCancel || defaults.onCancel;
 
