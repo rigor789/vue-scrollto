@@ -142,14 +142,17 @@ var _ = {
     },
     cumulativeOffset: function cumulativeOffset(element) {
         var top = 0;
+        var left = 0;
 
         do {
             top += element.offsetTop || 0;
+            left += element.offsetLeft || 0;
             element = element.offsetParent;
         } while (element);
 
         return {
-            top: top
+            top: top,
+            left: left
         };
     }
 };
@@ -184,9 +187,12 @@ var scroller = function scroller() {
     var onDone = void 0; // callback when scrolling is done
     var onCancel = void 0; // callback when scrolling is canceled / aborted
 
+    var initialX = void 0; // initial X of container
+    var targetX = void 0; // target X of container
     var initialY = void 0; // initial Y of container
     var targetY = void 0; // target Y of container
-    var diff = void 0; // difference
+    var diffX = void 0; // difference
+    var diffY = void 0; // difference
 
     var abort = void 0; // is scrolling aborted
 
@@ -215,6 +221,19 @@ var scroller = function scroller() {
         return scrollTop;
     }
 
+    function scrollLeft(container) {
+        var scrollLeft = container.scrollLeft;
+
+        if (container.tagName.toLowerCase() === "body") {
+            // in firefox body.scrollLeft always returns 0
+            // thus if we are trying to get scrollLeft on a body tag
+            // we need to get it from the documentElement
+            scrollLeft = scrollLeft || document.documentElement.scrollLeft;
+        }
+
+        return scrollLeft;
+    }
+
     function step(timestamp) {
         if (abort) return done();
         if (!timeStart) timeStart = timestamp;
@@ -224,13 +243,13 @@ var scroller = function scroller() {
         progress = Math.min(timeElapsed / duration, 1);
         progress = easingFn(progress);
 
-        top(container, initialY + diff * progress);
+        top(container, initialY + diffY * progress, initialX + diffX * progress);
 
         timeElapsed < duration ? window.requestAnimationFrame(step) : done();
     }
 
     function done() {
-        if (!abort) top(container, targetY);
+        if (!abort) top(container, targetY, targetX);
         timeStart = false;
 
         _.off(container, abortEvents, abortFn);
@@ -238,13 +257,15 @@ var scroller = function scroller() {
         if (!abort && onDone) onDone();
     }
 
-    function top(element, top) {
+    function top(element, top, left) {
         element.scrollTop = top;
+        element.scrollLeft = left;
         if (element.tagName.toLowerCase() === "body") {
             // in firefox body.scrollTop doesn't scroll the page
             // thus if we are trying to scrollTop on a body tag
             // we need to scroll on the documentElement
             document.documentElement.scrollTop = top;
+            document.documentElement.scrollLeft = left;
         }
     }
 
@@ -270,12 +291,23 @@ var scroller = function scroller() {
         onDone = options.onDone || defaults$$1.onDone;
         onCancel = options.onCancel || defaults$$1.onCancel;
 
+        var cumulativeOffset = _.cumulativeOffset(element);
+        console.log(cumulativeOffset);
+        console.log(container.offsetTop);
+        console.log(container.offsetLeft);
+
         initialY = scrollTop(container);
-        targetY = _.cumulativeOffset(element).top - container.offsetTop + offset;
+        targetY = cumulativeOffset.top - container.offsetTop + offset;
+
+        initialX = scrollLeft(container);
+        targetX = cumulativeOffset.left - container.offsetLeft + offset;
+
+        console.log(initialY, targetY, initialX, targetX);
 
         abort = false;
 
-        diff = targetY - initialY;
+        diffY = targetY - initialY;
+        diffX = targetX - initialX;
 
         if (typeof easing === "string") {
             easing = easings[easing] || easings["ease"];
@@ -283,7 +315,7 @@ var scroller = function scroller() {
 
         easingFn = index.apply(index, easing);
 
-        if (!diff) return;
+        if (!diffY && !diffX) return;
 
         _.on(container, abortEvents, abortFn);
 
