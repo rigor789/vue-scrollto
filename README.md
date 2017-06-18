@@ -68,6 +68,7 @@ Vue.use(VueScrollTo, {
      duration: 500,
      easing: "ease",
      offset: 0,
+     cancelable: true,
      onDone: false,
      onCancel: false
  })
@@ -81,6 +82,7 @@ VueScrollTo.setDefaults({
     duration: 500,
     easing: "ease",
     offset: 0,
+    cancelable: true,
     onDone: false,
     onCancel: false
 })
@@ -103,6 +105,7 @@ If you need to customize the scrolling options, you can pass in an object litera
      duration: 500,
      easing: 'linear',
      offset: -200,
+     cancelable: true
      onDone: onDone,
      onCancel: onCancel
  }">
@@ -123,6 +126,7 @@ var options = {
     container: '#container',
     easing: 'ease-in',
     offset: -60,
+    cancelable: true,
     onDone: function() {
       // scrolling is done
     },
