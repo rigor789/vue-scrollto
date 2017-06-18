@@ -162,6 +162,11 @@ The offset that should be applied when scrolling.
 
 *Default:* `0`
 
+#### cancelable
+Indicates if user can cancel the scroll or not.
+
+*Default:* `true`
+
 #### onDone 
 A callback function that should be called when scrolling has ended. 
 
