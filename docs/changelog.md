@@ -1,3 +1,6 @@
+## v2.6.9 (2017-6-18)
+- Added cancelable option
+
 ## v2.6.8 (2017-5-6)
 - Added default options setting.
 - Fixed documentation,
