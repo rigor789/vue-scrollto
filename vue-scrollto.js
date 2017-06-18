@@ -166,7 +166,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var abortEvents = ["mousedown", "wheel", "DOMMouseScroll", "mousewheel", "keyup", "touchmove"];
 
 var defaults$$1 = {
-    container: 'body',
+    container: "body",
     duration: 500,
     easing: "ease",
     offset: 0,
@@ -292,17 +292,12 @@ var scroller = function scroller() {
         onCancel = options.onCancel || defaults$$1.onCancel;
 
         var cumulativeOffset = _.cumulativeOffset(element);
-        console.log(cumulativeOffset);
-        console.log(container.offsetTop);
-        console.log(container.offsetLeft);
 
         initialY = scrollTop(container);
         targetY = cumulativeOffset.top - container.offsetTop + offset;
 
         initialX = scrollLeft(container);
         targetX = cumulativeOffset.left - container.offsetLeft + offset;
-
-        console.log(initialY, targetY, initialX, targetX);
 
         abort = false;
 
