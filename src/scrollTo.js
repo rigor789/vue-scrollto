@@ -141,7 +141,7 @@ const scroller = () => {
 
         if (!diff) return;
 
-        _.on(container, abortEvents, abortFn);
+        _.on(container, abortEvents, abortFn, { passive: true });
 
         window.requestAnimationFrame(step);
     }
