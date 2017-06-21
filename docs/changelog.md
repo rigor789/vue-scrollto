@@ -1,3 +1,6 @@
+## v2.6.10 (2017-6-21)
+- Made cancel events listener passive 
+
 ## v2.6.9 (2017-6-18)
 - Added cancelable option
 
