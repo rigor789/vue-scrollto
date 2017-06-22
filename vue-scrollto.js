@@ -243,13 +243,13 @@ var scroller = function scroller() {
         progress = Math.min(timeElapsed / duration, 1);
         progress = easingFn(progress);
 
-        top(container, initialY + diffY * progress, initialX + diffX * progress);
+        topLeft(container, initialY + diffY * progress, initialX + diffX * progress);
 
         timeElapsed < duration ? window.requestAnimationFrame(step) : done();
     }
 
     function done() {
-        if (!abort) top(container, targetY, targetX);
+        if (!abort) topLeft(container, targetY, targetX);
         timeStart = false;
 
         _.off(container, abortEvents, abortFn);
@@ -257,7 +257,7 @@ var scroller = function scroller() {
         if (!abort && onDone) onDone();
     }
 
-    function top(element, top, left) {
+    function topLeft(element, top, left) {
         element.scrollTop = top;
         element.scrollLeft = left;
         if (element.tagName.toLowerCase() === "body") {

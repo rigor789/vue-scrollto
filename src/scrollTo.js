@@ -89,7 +89,7 @@ const scroller = () => {
         progress = Math.min(timeElapsed / duration, 1);
         progress = easingFn(progress);
 
-        top(
+        topLeft(
             container,
             initialY + diffY * progress,
             initialX + diffX * progress
@@ -99,7 +99,7 @@ const scroller = () => {
     }
 
     function done() {
-        if (!abort) top(container, targetY, targetX);
+        if (!abort) topLeft(container, targetY, targetX);
         timeStart = false;
 
         _.off(container, abortEvents, abortFn);
@@ -107,7 +107,7 @@ const scroller = () => {
         if (!abort && onDone) onDone();
     }
 
-    function top(element, top, left) {
+    function topLeft(element, top, left) {
         element.scrollTop = top;
         element.scrollLeft = left;
         if (element.tagName.toLowerCase() === "body") {
