@@ -35,9 +35,12 @@ const scroller = () => {
     let onDone; // callback when scrolling is done
     let onCancel; // callback when scrolling is canceled / aborted
 
+    let initialX; // initial X of container
+    let targetX; // target X of container
     let initialY; // initial Y of container
     let targetY; // target Y of container
-    let diff; // difference
+    let diffX; // difference
+    let diffY; // difference
 
     let abort; // is scrolling aborted
 
@@ -67,6 +70,19 @@ const scroller = () => {
         return scrollTop;
     }
 
+    function scrollLeft(container) {
+        let scrollLeft = container.scrollLeft;
+
+        if (container.tagName.toLowerCase() === "body") {
+            // in firefox body.scrollLeft always returns 0
+            // thus if we are trying to get scrollLeft on a body tag
+            // we need to get it from the documentElement
+            scrollLeft = scrollLeft || document.documentElement.scrollLeft;
+        }
+
+        return scrollLeft;
+    }
+
     function step(timestamp) {
         if (abort) return done();
         if (!timeStart) timeStart = timestamp;
@@ -76,13 +92,17 @@ const scroller = () => {
         progress = Math.min(timeElapsed / duration, 1);
         progress = easingFn(progress);
 
-        top(container, initialY + diff * progress);
+        topLeft(
+            container,
+            initialY + diffY * progress,
+            initialX + diffX * progress
+        );
 
         timeElapsed < duration ? window.requestAnimationFrame(step) : done();
     }
 
     function done() {
-        if (!abort) top(container, targetY);
+        if (!abort) topLeft(container, targetY, targetX);
         timeStart = false;
 
         _.off(container, abortEvents, abortFn);
@@ -90,13 +110,15 @@ const scroller = () => {
         if (!abort && onDone) onDone();
     }
 
-    function top(element, top) {
+    function topLeft(element, top, left) {
         element.scrollTop = top;
+        element.scrollLeft = left;
         if (element.tagName.toLowerCase() === "body") {
             // in firefox body.scrollTop doesn't scroll the page
             // thus if we are trying to scrollTop on a body tag
             // we need to scroll on the documentElement
             document.documentElement.scrollTop = top;
+            document.documentElement.scrollLeft = left;
         }
     }
 
@@ -124,14 +146,18 @@ const scroller = () => {
         onDone = options.onDone || defaults.onDone;
         onCancel = options.onCancel || defaults.onCancel;
 
+        var cumulativeOffset = _.cumulativeOffset(element);
+
         initialY = scrollTop(container);
-        targetY = _.cumulativeOffset(element).top -
-            container.offsetTop +
-            offset;
+        targetY = cumulativeOffset.top - container.offsetTop + offset;
+
+        initialX = scrollLeft(container);
+        targetX = cumulativeOffset.left - container.offsetLeft + offset;
 
         abort = false;
 
-        diff = targetY - initialY;
+        diffY = targetY - initialY;
+        diffX = targetX - initialX;
 
         if (typeof easing === "string") {
             easing = easings[easing] || easings["ease"];
@@ -139,7 +165,7 @@ const scroller = () => {
 
         easingFn = BezierEasing.apply(BezierEasing, easing);
 
-        if (!diff) return;
+        if (!diffY && !diffX) return;
 
         _.on(container, abortEvents, abortFn, { passive: true });
 
