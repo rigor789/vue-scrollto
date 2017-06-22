@@ -1,3 +1,6 @@
+## v2.7.0 (2017-6-22)
+- Added horizontal scroll support (#31) 
+
 ## v2.6.10 (2017-6-21)
 - Made cancel events listener passive 
 
