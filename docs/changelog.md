@@ -1,3 +1,6 @@
+## v2.7.1 (2017-7-8)
+- Fixed setting `cancelable` to false being ignored
+
 ## v2.7.0 (2017-6-22)
 - Added horizontal scroll support (#31) 
 

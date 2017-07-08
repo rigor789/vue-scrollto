@@ -142,7 +142,7 @@ const scroller = () => {
         duration = options.duration || defaults.duration;
         easing = options.easing || defaults.easing;
         offset = options.offset || defaults.offset;
-        cancelable = options.cancelable || defaults.cancelable;
+        cancelable = options.cancelable !== false;
         onDone = options.onDone || defaults.onDone;
         onCancel = options.onCancel || defaults.onCancel;
 

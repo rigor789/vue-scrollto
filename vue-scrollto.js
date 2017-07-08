@@ -291,7 +291,7 @@ var scroller = function scroller() {
         duration = options.duration || defaults$$1.duration;
         easing = options.easing || defaults$$1.easing;
         offset = options.offset || defaults$$1.offset;
-        cancelable = options.cancelable || defaults$$1.cancelable;
+        cancelable = options.cancelable !== false;
         onDone = options.onDone || defaults$$1.onDone;
         onCancel = options.onCancel || defaults$$1.onCancel;
 
@@ -316,7 +316,7 @@ var scroller = function scroller() {
 
         if (!diffY && !diffX) return;
 
-        _.on(container, abortEvents, abortFn);
+        _.on(container, abortEvents, abortFn, { passive: true });
 
         window.requestAnimationFrame(step);
     }
