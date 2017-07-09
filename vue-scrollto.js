@@ -338,10 +338,16 @@ function deleteBinding(el) {
     return false;
 }
 
+function findBinding(el) {
+    for (var i = 0; i < bindings.length; ++i) {
+        if (bindings[i].el === el) {
+            return bindings[i];
+        }
+    }
+}
+
 function getBinding(el) {
-    var binding = bindings.find(function (entry) {
-        return entry.el == el;
-    });
+    var binding = findBinding(el);
 
     if (binding) {
         return binding;

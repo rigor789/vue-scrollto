@@ -13,10 +13,16 @@ function deleteBinding(el) {
     return false;
 }
 
+function findBinding(el) {
+    for (let i = 0; i < bindings.length; ++i) {
+        if (bindings[i].el === el) {
+            return bindings[i];
+        }
+    }
+}
+
 function getBinding(el) {
-    let binding = bindings.find(entry => {
-        return entry.el == el;
-    });
+    let binding = findBinding(el);
 
     if (binding) {
         return binding;
