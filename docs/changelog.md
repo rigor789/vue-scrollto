@@ -1,3 +1,6 @@
+## v2.7.2 (2017-7-9)
+- Added support for older browsers, by not using `.find()`. (#33)
+
 ## v2.7.1 (2017-7-8)
 - Fixed setting `cancelable` to false being ignored
 
