@@ -1,3 +1,6 @@
+## v2.7.4 (2017-8-22)
+- transform Object.assign to support IE11 (issue: #37 pr: #40)
+
 ## v2.7.3 (2017-8-22)
 - Disable horizontal scroll by default (#39)
 

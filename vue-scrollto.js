@@ -163,6 +163,40 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
 var abortEvents = ["mousedown", "wheel", "DOMMouseScroll", "mousewheel", "keyup", "touchmove"];
 
 var defaults$$1 = {
@@ -178,7 +212,7 @@ var defaults$$1 = {
 };
 
 function setDefaults(options) {
-    defaults$$1 = Object.assign({}, defaults$$1, options);
+    defaults$$1 = _extends({}, defaults$$1, options);
 }
 
 var scroller = function scroller() {
