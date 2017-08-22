@@ -70,7 +70,9 @@ Vue.use(VueScrollTo, {
      offset: 0,
      cancelable: true,
      onDone: false,
-     onCancel: false
+     onCancel: false,
+     x: true,
+     y: false
  })
 ```
 
@@ -84,7 +86,9 @@ VueScrollTo.setDefaults({
     offset: 0,
     cancelable: true,
     onDone: false,
-    onCancel: false
+    onCancel: false,
+    x: true,
+    y: false
 })
 ```
 
@@ -107,7 +111,9 @@ If you need to customize the scrolling options, you can pass in an object litera
      offset: -200,
      cancelable: true
      onDone: onDone,
-     onCancel: onCancel
+     onCancel: onCancel,
+     x: true,
+     y: false
  }">
     Scroll to #element
 </a>
@@ -132,7 +138,9 @@ var options = {
     },
     onCancel: function() {
       // scrolling has been interrupted
-    }
+    },
+    x: true,
+    y: false
 }
 
 VueScrollTo.scrollTo(element, duration, options)
@@ -180,6 +188,16 @@ A callback function that should be called when scrolling has ended.
 A callback function that should be called when scrolling has been aborted by the user (user scrolled, clicked etc.).
  
 *Default:* `noop`
+
+#### x 
+Whether or not we want scrolling on the `x` axis
+ 
+*Default:* `true`
+
+#### y 
+Whether or not we want scrolling on the `y` axis
+ 
+*Default:* `false`
 
 
 ## Easing
