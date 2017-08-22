@@ -1,3 +1,6 @@
+## v2.7.3 (2017-8-22)
+- Disable horizontal scroll by default (#39)
+
 ## v2.7.2 (2017-7-9)
 - Added support for older browsers, by not using `.find()`. (#33)
 
