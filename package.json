@@ -26,14 +26,15 @@
     "bezier-easing": "^2.0.3"
   },
   "devDependencies": {
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "lint-staged": "^3.3.1",
     "pre-commit": "^1.2.2",
     "prettier": "^0.19.0",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-commonjs": "^8.0.2"
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0"
   },
   "scripts": {
     "build": "rollup -c",

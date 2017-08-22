@@ -11,7 +11,8 @@ export default {
         commonjs(),
         babel({
             exclude: 'node_modules/**',
-            presets: ['es2015-rollup']
+            presets: ['es2015-rollup'],
+            plugins: ['transform-object-assign']
         })
     ],
 
