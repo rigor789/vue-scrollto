@@ -18,7 +18,9 @@ let defaults = {
     offset: 0,
     cancelable: true,
     onDone: false,
-    onCancel: false
+    onCancel: false,
+    x: true,
+    y: false
 };
 
 export function setDefaults(options) {
@@ -34,6 +36,8 @@ const scroller = () => {
     let cancelable; // indicates if user can cancel the scroll or not.
     let onDone; // callback when scrolling is done
     let onCancel; // callback when scrolling is canceled / aborted
+    let x; // scroll on x axis
+    let y; // scroll on y axis
 
     let initialX; // initial X of container
     let targetX; // target X of container
@@ -111,14 +115,14 @@ const scroller = () => {
     }
 
     function topLeft(element, top, left) {
-        element.scrollTop = top;
-        element.scrollLeft = left;
+        if (x) element.scrollTop = top;
+        if (y) element.scrollLeft = left;
         if (element.tagName.toLowerCase() === "body") {
             // in firefox body.scrollTop doesn't scroll the page
             // thus if we are trying to scrollTop on a body tag
             // we need to scroll on the documentElement
-            document.documentElement.scrollTop = top;
-            document.documentElement.scrollLeft = left;
+            if (x) document.documentElement.scrollTop = top;
+            if (y) document.documentElement.scrollLeft = left;
         }
     }
 
@@ -145,6 +149,8 @@ const scroller = () => {
         cancelable = options.cancelable !== false;
         onDone = options.onDone || defaults.onDone;
         onCancel = options.onCancel || defaults.onCancel;
+        x = options.x === undefined ? defaults.x : options.x;
+        y = options.y === undefined ? defaults.y : options.y;
 
         var cumulativeOffset = _.cumulativeOffset(element);
 
