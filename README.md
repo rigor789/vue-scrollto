@@ -143,10 +143,13 @@ var options = {
     y: false
 }
 
-VueScrollTo.scrollTo(element, duration, options)
+var cancelScroll = VueScrollTo.scrollTo(element, duration, options)
 
 // or alternatively inside your components you can use
-this.$scrollTo(element, duration, options)
+cancelScroll = this.$scrollTo(element, duration, options)
+
+// to cancel scrolling you can call the returned function
+cancelScroll()
 ```
 
 ## Options

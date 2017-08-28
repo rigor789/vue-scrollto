@@ -361,6 +361,7 @@ var scroller = function scroller() {
         window.requestAnimationFrame(step);
 
         return function () {
+            abortEv = null;
             abort = true;
         };
     }

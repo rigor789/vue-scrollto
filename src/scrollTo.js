@@ -178,6 +178,7 @@ const scroller = () => {
         window.requestAnimationFrame(step);
 
         return () => {
+            abortEv = null;
             abort = true;
         };
     }
