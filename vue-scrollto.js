@@ -359,6 +359,10 @@ var scroller = function scroller() {
         _.on(container, abortEvents, abortFn, { passive: true });
 
         window.requestAnimationFrame(step);
+
+        return function () {
+            abort = true;
+        };
     }
 
     return scrollTo;
