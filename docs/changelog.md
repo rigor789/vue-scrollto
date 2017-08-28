@@ -1,3 +1,6 @@
+## v2.7.5 (2017-8-28)
+- Add a way to cancel scrolling programmatically (#46)
+
 ## v2.7.4 (2017-8-22)
 - transform Object.assign to support IE11 (issue: #37 pr: #40)
 
