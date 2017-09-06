@@ -19,8 +19,8 @@ let defaults = {
     cancelable: true,
     onDone: false,
     onCancel: false,
-    x: true,
-    y: false
+    x: false,
+    y: true
 };
 
 export function setDefaults(options) {
@@ -115,14 +115,14 @@ const scroller = () => {
     }
 
     function topLeft(element, top, left) {
-        if (x) element.scrollTop = top;
-        if (y) element.scrollLeft = left;
+        if (y) element.scrollTop = top;
+        if (x) element.scrollLeft = left;
         if (element.tagName.toLowerCase() === "body") {
             // in firefox body.scrollTop doesn't scroll the page
             // thus if we are trying to scrollTop on a body tag
             // we need to scroll on the documentElement
-            if (x) document.documentElement.scrollTop = top;
-            if (y) document.documentElement.scrollLeft = left;
+            if (y) document.documentElement.scrollTop = top;
+            if (x) document.documentElement.scrollLeft = left;
         }
     }
 

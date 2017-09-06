@@ -71,8 +71,8 @@ Vue.use(VueScrollTo, {
      cancelable: true,
      onDone: false,
      onCancel: false,
-     x: true,
-     y: false
+     x: false,
+     y: true
  })
 ```
 
@@ -87,8 +87,8 @@ VueScrollTo.setDefaults({
     cancelable: true,
     onDone: false,
     onCancel: false,
-    x: true,
-    y: false
+    x: false,
+    y: true
 })
 ```
 
@@ -112,8 +112,8 @@ If you need to customize the scrolling options, you can pass in an object litera
      cancelable: true
      onDone: onDone,
      onCancel: onCancel,
-     x: true,
-     y: false
+     x: false,
+     y: true
  }">
     Scroll to #element
 </a>
@@ -139,8 +139,8 @@ var options = {
     onCancel: function() {
       // scrolling has been interrupted
     },
-    x: true,
-    y: false
+    x: false,
+    y: true
 }
 
 var cancelScroll = VueScrollTo.scrollTo(element, duration, options)
@@ -195,12 +195,12 @@ A callback function that should be called when scrolling has been aborted by the
 #### x 
 Whether or not we want scrolling on the `x` axis
  
-*Default:* `true`
+*Default:* `false`
 
 #### y 
 Whether or not we want scrolling on the `y` axis
  
-*Default:* `false`
+*Default:* `true`
 
 
 ## Easing
