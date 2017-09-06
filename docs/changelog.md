@@ -1,4 +1,7 @@
 ## v2.7.6 (2017-9-6)
+- Pushed the intended change for v2.7.6
+
+## v2.7.6 (2017-9-6)
 - Fixed x and y axes being switched up.
 
 ## v2.7.5 (2017-8-28)
