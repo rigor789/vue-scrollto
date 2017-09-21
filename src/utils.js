@@ -1,3 +1,14 @@
+// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
+let supportsPassive = false;
+try {
+    let opts = Object.defineProperty({}, "passive", {
+        get: function() {
+            supportsPassive = true;
+        }
+    });
+    window.addEventListener("test", null, opts);
+} catch (e) {}
+
 export default {
     $(selector) {
         if (typeof selector !== "string") {
@@ -5,12 +16,16 @@ export default {
         }
         return document.querySelector(selector);
     },
-    on(element, events, handler) {
+    on(element, events, handler, opts = { passive: false }) {
         if (!(events instanceof Array)) {
             events = [events];
         }
         for (let i = 0; i < events.length; i++) {
-            element.addEventListener(events[i], handler);
+            element.addEventListener(
+                events[i],
+                handler,
+                supportsPassive ? opts : false
+            );
         }
     },
     off(element, events, handler) {

@@ -117,6 +117,17 @@ var easings = {
     "ease-in-out": [0.42, 0.0, 0.58, 1.0]
 };
 
+// https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
+var supportsPassive = false;
+try {
+    var opts = Object.defineProperty({}, 'passive', {
+        get: function get() {
+            supportsPassive = true;
+        }
+    });
+    window.addEventListener("test", null, opts);
+} catch (e) {}
+
 var _ = {
     $: function $(selector) {
         if (typeof selector !== "string") {
@@ -125,11 +136,13 @@ var _ = {
         return document.querySelector(selector);
     },
     on: function on(element, events, handler) {
+        var opts = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : { passive: false };
+
         if (!(events instanceof Array)) {
             events = [events];
         }
         for (var i = 0; i < events.length; i++) {
-            element.addEventListener(events[i], handler);
+            element.addEventListener(events[i], handler, supportsPassive ? opts : false);
         }
     },
     off: function off(element, events, handler) {
