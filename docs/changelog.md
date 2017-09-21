@@ -1,3 +1,6 @@
+## v2.7.8 (2017-9-21)
+- Fixed passive event listeners
+
 ## v2.7.6 (2017-9-6)
 - Pushed the intended change for v2.7.6
 
