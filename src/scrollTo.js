@@ -152,13 +152,14 @@ const scroller = () => {
         x = options.x === undefined ? defaults.x : options.x;
         y = options.y === undefined ? defaults.y : options.y;
 
-        var cumulativeOffset = _.cumulativeOffset(element);
+        var cumulativeOffsetContainer = _.cumulativeOffset(container);
+        var cumulativeOffsetElement = _.cumulativeOffset(element);
 
         initialY = scrollTop(container);
-        targetY = cumulativeOffset.top - container.offsetTop + offset;
+        targetY = cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset;
 
         initialX = scrollLeft(container);
-        targetX = cumulativeOffset.left - container.offsetLeft + offset;
+        targetX = cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset;
 
         abort = false;
 
