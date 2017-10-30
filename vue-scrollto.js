@@ -120,7 +120,7 @@ var easings = {
 // https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
 var supportsPassive = false;
 try {
-    var opts = Object.defineProperty({}, 'passive', {
+    var opts = Object.defineProperty({}, "passive", {
         get: function get() {
             supportsPassive = true;
         }
@@ -348,13 +348,14 @@ var scroller = function scroller() {
         x = options.x === undefined ? defaults$$1.x : options.x;
         y = options.y === undefined ? defaults$$1.y : options.y;
 
-        var cumulativeOffset = _.cumulativeOffset(element);
+        var cumulativeOffsetContainer = _.cumulativeOffset(container);
+        var cumulativeOffsetElement = _.cumulativeOffset(element);
 
         initialY = scrollTop(container);
-        targetY = cumulativeOffset.top - container.offsetTop + offset;
+        targetY = cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset;
 
         initialX = scrollLeft(container);
-        targetX = cumulativeOffset.left - container.offsetLeft + offset;
+        targetX = cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset;
 
         abort = false;
 

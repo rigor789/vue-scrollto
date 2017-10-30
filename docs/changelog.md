@@ -1,3 +1,6 @@
+## v2.7.9 (2017-10-30)
+- Fixed scrolling in relative containers (#57)
+
 ## v2.7.8 (2017-9-21)
 - Fixed passive event listeners
 
