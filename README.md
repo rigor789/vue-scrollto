@@ -168,7 +168,7 @@ The duration (in milliseconds) of the scrolling animation.
 *Default:* `500` 
 
 #### easing 
-The easing to be used when animating. Read more in the [Easing section](#easing). 
+The easing to be used when animating. Read more in the [Easing section](#easing1). 
 
 *Default:* `ease`
 
