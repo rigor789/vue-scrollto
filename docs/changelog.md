@@ -1,3 +1,6 @@
+## v2.7.10 (2017-11-8)
+- Fixed default value being ignored for cancelable when not explicitly set
+
 ## v2.7.9 (2017-10-30)
 - Fixed scrolling in relative containers (#57)
 
