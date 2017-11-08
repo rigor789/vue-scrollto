@@ -146,7 +146,9 @@ const scroller = () => {
         duration = options.duration || defaults.duration;
         easing = options.easing || defaults.easing;
         offset = options.offset || defaults.offset;
-        cancelable = options.cancelable !== false;
+        cancelable = options.hasOwnProperty("cancelable")
+            ? options.cancelable !== false
+            : defaults.cancelable;
         onDone = options.onDone || defaults.onDone;
         onCancel = options.onCancel || defaults.onCancel;
         x = options.x === undefined ? defaults.x : options.x;
@@ -156,10 +158,14 @@ const scroller = () => {
         var cumulativeOffsetElement = _.cumulativeOffset(element);
 
         initialY = scrollTop(container);
-        targetY = cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset;
+        targetY = cumulativeOffsetElement.top -
+            cumulativeOffsetContainer.top +
+            offset;
 
         initialX = scrollLeft(container);
-        targetX = cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset;
+        targetX = cumulativeOffsetElement.left -
+            cumulativeOffsetContainer.left +
+            offset;
 
         abort = false;
 
