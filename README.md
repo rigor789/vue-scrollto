@@ -78,7 +78,7 @@ Vue.use(VueScrollTo, {
 
 In case you are using the browser version (directly including the script on your page), you can set the defaults with
  
-```
+```js
 VueScrollTo.setDefaults({
     container: "body",
     duration: 500,
@@ -120,7 +120,7 @@ If you need to customize the scrolling options, you can pass in an object litera
 ```
 
 <p class="tip">
-    Check out the [Options Section](#options) for more details about the available options.
+    Check out the [Options section](#options) for more details about the available options.
 </p>
 
 ### Programatically
@@ -168,7 +168,7 @@ The duration (in milliseconds) of the scrolling animation.
 *Default:* `500` 
 
 #### easing 
-The easing to be used when animating. Read more in the [Easing section](#easing). 
+The easing to be used when animating. Read more in the [Easing section](#easing1). 
 
 *Default:* `ease`
 
