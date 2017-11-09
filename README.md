@@ -17,7 +17,7 @@ For `vue 1.x` use `vue-scrollTo@1.0.1` (note the capital T) but keep in mind tha
 
 `vue-scrollto` uses `window.requestAnimationFrame` to perform the animations, thus giving the best performance.
 
-Easing is done using [bezier-easing]() - A well tested easing micro-library.
+Easing is done using [bezier-easing](https://github.com/gre/bezier-easing) - A well tested easing micro-library.
 
 <p class="tip">
 It even knows when the user interrupts, and doesn't force scrolling that would result in bad UX.
@@ -205,7 +205,7 @@ Whether or not we want scrolling on the `y` axis
 
 ## Easing
 
-Easing is calculated using [bezier-easing]() so you can pass your own values into `options.easing` in the form of an array with 4 values, or you can use any of the default easings by referencing their names as strings (`ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out`).
+Easing is calculated using [bezier-easing](https://github.com/gre/bezier-easing) so you can pass your own values into `options.easing` in the form of an array with 4 values, or you can use any of the default easings by referencing their names as strings (`ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out`).
 
 vue-scrollto uses the following values for the default easings:
 ```js
