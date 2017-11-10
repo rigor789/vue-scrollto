@@ -168,7 +168,7 @@ The duration (in milliseconds) of the scrolling animation.
 *Default:* `500` 
 
 #### easing 
-The easing to be used when animating. Read more in the [Easing section](#easing-1). 
+The easing to be used when animating. Read more in the [Easing section](#easing-detailed). 
 
 *Default:* `ease`
 
@@ -203,7 +203,7 @@ Whether or not we want scrolling on the `y` axis
 *Default:* `true`
 
 
-## Easing
+<h2 id="easing-detailed">Easing</h2>
 
 Easing is calculated using [bezier-easing](https://github.com/gre/bezier-easing) so you can pass your own values into `options.easing` in the form of an array with 4 values, or you can use any of the default easings by referencing their names as strings (`ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out`).
 
