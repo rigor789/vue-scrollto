@@ -120,7 +120,7 @@ If you need to customize the scrolling options, you can pass in an object litera
 ```
 
 <p class="tip">
-    Check out the <a href="#options">Options section</a> for more details about the available options.
+    Check out the Options section for more details about the available options.
 </p>
 
 ### Programatically
