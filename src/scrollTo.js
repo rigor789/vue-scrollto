@@ -157,6 +157,10 @@ const scroller = () => {
         var cumulativeOffsetContainer = _.cumulativeOffset(container);
         var cumulativeOffsetElement = _.cumulativeOffset(element);
 
+        if (typeof offset === "function") {
+            offset = offset();
+        }
+
         initialY = scrollTop(container);
         targetY = cumulativeOffsetElement.top -
             cumulativeOffsetContainer.top +
