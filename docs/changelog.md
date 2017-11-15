@@ -1,3 +1,6 @@
+## v2.8.0 (2017-11-15)
+- Allow a callback in offset option (#61)
+
 ## v2.7.10 (2017-11-8)
 - Fixed default value being ignored for cancelable when not explicitly set
 
