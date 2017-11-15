@@ -173,7 +173,7 @@ The easing to be used when animating. Read more in the [Easing section](#easing-
 *Default:* `ease`
 
 #### offset 
-The offset that should be applied when scrolling. 
+The offset that should be applied when scrolling. This option accepts a callback function since `v2.8.0`. 
 
 *Default:* `0`
 
