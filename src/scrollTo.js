@@ -27,7 +27,7 @@ export function setDefaults(options) {
     defaults = Object.assign({}, defaults, options);
 }
 
-const scroller = () => {
+export const scroller = () => {
     let element; // element to scroll to
     let container; // container to scroll
     let duration; // duration of the scrolling
