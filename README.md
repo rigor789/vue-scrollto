@@ -218,6 +218,18 @@ let easings = {
 }
 ```
 
+## Simultaneous Scrolling
+
+If you need to scroll multiple containers simultaneously, you can import the scroller factory directly and create multiple instances. (Using the default `scrollTo` methods allows for only one scroll action at a time for performance reasons.)
+
+```js
+import {scroller} from 'vue-scrollto/src/scrollTo'
+const firstScrollTo = scroller()
+const secondScrollTo = scroller()
+firstScrollTo('#el1')
+secondScrollTo('#el2')
+```
+
 ## License
 
 MIT

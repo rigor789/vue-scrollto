@@ -57,7 +57,7 @@ function newtonRaphsonIterate (aX, aGuessT, mX1, mX2) {
  return aGuessT;
 }
 
-var index = function bezier (mX1, mY1, mX2, mY2) {
+var src = function bezier (mX1, mY1, mX2, mY2) {
   if (!(0 <= mX1 && mX1 <= 1 && 0 <= mX2 && mX2 <= 1)) {
     throw new Error('bezier x values must be in [0, 1] range');
   }
@@ -370,7 +370,7 @@ var scroller = function scroller() {
             easing = easings[easing] || easings["ease"];
         }
 
-        easingFn = index.apply(index, easing);
+        easingFn = src.apply(src, easing);
 
         if (!diffY && !diffX) return;
 
