@@ -39,7 +39,7 @@
   "scripts": {
     "build": "rollup -c",
     "lint-staged": "lint-staged",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "lint-staged": {
     "src/**.js": [
