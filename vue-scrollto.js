@@ -218,6 +218,7 @@ var defaults$$1 = {
     easing: "ease",
     offset: 0,
     cancelable: true,
+    onStart: false,
     onDone: false,
     onCancel: false,
     x: false,
@@ -235,6 +236,7 @@ var scroller = function scroller() {
     var easing = void 0; // easing to be used when scrolling
     var offset = void 0; // offset to be added (subtracted)
     var cancelable = void 0; // indicates if user can cancel the scroll or not.
+    var onStart = void 0; // callback when scrolling is started
     var onDone = void 0; // callback when scrolling is done
     var onCancel = void 0; // callback when scrolling is canceled / aborted
     var x = void 0; // scroll on x axis
@@ -343,6 +345,7 @@ var scroller = function scroller() {
         easing = options.easing || defaults$$1.easing;
         offset = options.offset || defaults$$1.offset;
         cancelable = options.hasOwnProperty("cancelable") ? options.cancelable !== false : defaults$$1.cancelable;
+        onStart = options.onStart || defaults$$1.onStart;
         onDone = options.onDone || defaults$$1.onDone;
         onCancel = options.onCancel || defaults$$1.onCancel;
         x = options.x === undefined ? defaults$$1.x : options.x;
@@ -373,6 +376,7 @@ var scroller = function scroller() {
         easingFn = src.apply(src, easing);
 
         if (!diffY && !diffX) return;
+        if (onStart) onStart();
 
         _.on(container, abortEvents, abortFn, { passive: true });
 

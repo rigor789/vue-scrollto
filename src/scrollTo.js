@@ -17,6 +17,7 @@ let defaults = {
     easing: "ease",
     offset: 0,
     cancelable: true,
+    onStart: false,
     onDone: false,
     onCancel: false,
     x: false,
@@ -34,6 +35,7 @@ export const scroller = () => {
     let easing; // easing to be used when scrolling
     let offset; // offset to be added (subtracted)
     let cancelable; // indicates if user can cancel the scroll or not.
+    let onStart; // callback when scrolling is started
     let onDone; // callback when scrolling is done
     let onCancel; // callback when scrolling is canceled / aborted
     let x; // scroll on x axis
@@ -149,6 +151,7 @@ export const scroller = () => {
         cancelable = options.hasOwnProperty("cancelable")
             ? options.cancelable !== false
             : defaults.cancelable;
+        onStart = options.onStart || defaults.onStart;
         onDone = options.onDone || defaults.onDone;
         onCancel = options.onCancel || defaults.onCancel;
         x = options.x === undefined ? defaults.x : options.x;
@@ -183,6 +186,7 @@ export const scroller = () => {
         easingFn = BezierEasing.apply(BezierEasing, easing);
 
         if (!diffY && !diffX) return;
+        if (onStart) onStart();
 
         _.on(container, abortEvents, abortFn, { passive: true });
 
