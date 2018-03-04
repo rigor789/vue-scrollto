@@ -69,6 +69,7 @@ Vue.use(VueScrollTo, {
      easing: "ease",
      offset: 0,
      cancelable: true,
+     onStart: false,
      onDone: false,
      onCancel: false,
      x: false,
@@ -85,6 +86,7 @@ VueScrollTo.setDefaults({
     easing: "ease",
     offset: 0,
     cancelable: true,
+    onStart: false,
     onDone: false,
     onCancel: false,
     x: false,
@@ -110,6 +112,7 @@ If you need to customize the scrolling options, you can pass in an object litera
      easing: 'linear',
      offset: -200,
      cancelable: true
+     onStart: onStart,
      onDone: onDone,
      onCancel: onCancel,
      x: false,
@@ -133,6 +136,9 @@ var options = {
     easing: 'ease-in',
     offset: -60,
     cancelable: true,
+    onStart: function() {
+      // scrolling started
+    },
     onDone: function() {
       // scrolling is done
     },
@@ -181,6 +187,11 @@ The offset that should be applied when scrolling. This option accepts a callback
 Indicates if user can cancel the scroll or not.
 
 *Default:* `true`
+
+#### onStart
+A callback function that should be called when scrolling has started.
+
+*Default:* `noop`
 
 #### onDone 
 A callback function that should be called when scrolling has ended. 
