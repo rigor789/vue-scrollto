@@ -136,10 +136,10 @@ var options = {
     easing: 'ease-in',
     offset: -60,
     cancelable: true,
-    onStart: function() {
+    onStart: function(element) {
       // scrolling started
     },
-    onDone: function() {
+    onDone: function(element) {
       // scrolling is done
     },
     onCancel: function() {
@@ -189,12 +189,12 @@ Indicates if user can cancel the scroll or not.
 *Default:* `true`
 
 #### onStart
-A callback function that should be called when scrolling has started.
+A callback function that should be called when scrolling has started. Receives the target element as a parameter.
 
 *Default:* `noop`
 
 #### onDone 
-A callback function that should be called when scrolling has ended. 
+A callback function that should be called when scrolling has ended. Receives the target element as a parameter.
 
 *Default:* `noop`
 
