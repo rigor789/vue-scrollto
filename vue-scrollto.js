@@ -309,8 +309,8 @@ var scroller = function scroller() {
         timeStart = false;
 
         _.off(container, abortEvents, abortFn);
-        if (abort && onCancel) onCancel(abortEv);
-        if (!abort && onDone) onDone();
+        if (abort && onCancel) onCancel(abortEv, element);
+        if (!abort && onDone) onDone(element);
     }
 
     function topLeft(element, top, left) {
@@ -376,7 +376,7 @@ var scroller = function scroller() {
         easingFn = src.apply(src, easing);
 
         if (!diffY && !diffX) return;
-        if (onStart) onStart();
+        if (onStart) onStart(element);
 
         _.on(container, abortEvents, abortFn, { passive: true });
 
