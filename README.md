@@ -199,7 +199,7 @@ A callback function that should be called when scrolling has ended. Receives the
 *Default:* `noop`
 
 #### onCancel 
-A callback function that should be called when scrolling has been aborted by the user (user scrolled, clicked etc.).
+A callback function that should be called when scrolling has been aborted by the user (user scrolled, clicked etc.). Receives the abort event and the target element as parameters.
  
 *Default:* `noop`
 

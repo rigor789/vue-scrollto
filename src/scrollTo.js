@@ -112,7 +112,7 @@ export const scroller = () => {
         timeStart = false;
 
         _.off(container, abortEvents, abortFn);
-        if (abort && onCancel) onCancel(abortEv);
+        if (abort && onCancel) onCancel(abortEv, element);
         if (!abort && onDone) onDone(element);
     }
 
