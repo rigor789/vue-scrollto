@@ -1,3 +1,12 @@
+## v2.11.0 (2018-3-10)
+- Add element parameter to onStart and onDone callbacks (#79)
+
+## v2.10.0 (2018-3-4)
+- Added onStart callback (#76) 
+
+## v2.9.0 (2018-2-24)
+- Export scroller factory function (#74)
+
 ## v2.8.0 (2017-11-15)
 - Allow a callback in offset option (#61)
 
