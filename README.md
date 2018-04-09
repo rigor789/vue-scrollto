@@ -43,8 +43,8 @@ yarn add vue-scrollto
 
 Directly include it in html:
 ```html
-<script src="https://unpkg.com/vue@2.2.4"></script>
-<script src="https://unpkg.com/vue-scrollto"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-scrollto"></script>
 ```
 <p class="tip">
     When including it in html, it will automatically call `Vue.use` and also set a `VueScrollTo` variable that you can use!
