@@ -165,17 +165,6 @@ export const scroller = () => {
         var cumulativeOffsetContainer = _.cumulativeOffset(container);
         var cumulativeOffsetElement = _.cumulativeOffset(element);
 
-        if (!force) {
-            const containerTop = container.scrollTop;
-            const containerBottom = containerTop + container.offsetHeight;
-            const elementTop = element.offsetTop;
-            const elementBottom = element.offsetTop + element.offsetHeight;
-
-            if (elementTop >= containerTop && elementBottom <= containerBottom) {
-                return;
-            }
-        }
-
         if (typeof offset === "function") {
             offset = offset();
         }
@@ -194,6 +183,16 @@ export const scroller = () => {
 
         diffY = targetY - initialY;
         diffX = targetX - initialX;
+
+        if (!force) {
+            const containerTop = initialY;
+            const containerBottom = containerTop + container.offsetHeight;
+            const elementTop = targetY;
+            const elementBottom = elementTop + element.offsetHeight;
+            if (elementTop >= containerTop && elementBottom <= containerBottom) {
+                return;
+            }
+        }
 
         if (typeof easing === "string") {
             easing = easings[easing] || easings["ease"];
