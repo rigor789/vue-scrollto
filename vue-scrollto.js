@@ -464,7 +464,7 @@ var install = function install(Vue, options) {
 if (typeof window !== "undefined" && window.Vue) {
     window.VueScrollTo = VueScrollTo$1;
     window.VueScrollTo.setDefaults = setDefaults;
-    Vue.use(install);
+    window.Vue.use(install);
 }
 
 VueScrollTo$1.install = install;
