@@ -217,6 +217,7 @@ var defaults$$1 = {
     duration: 500,
     easing: "ease",
     offset: 0,
+    force: true,
     cancelable: true,
     onStart: false,
     onDone: false,
@@ -235,6 +236,7 @@ var scroller = function scroller() {
     var duration = void 0; // duration of the scrolling
     var easing = void 0; // easing to be used when scrolling
     var offset = void 0; // offset to be added (subtracted)
+    var force = void 0; // force scroll, even if element is visible
     var cancelable = void 0; // indicates if user can cancel the scroll or not.
     var onStart = void 0; // callback when scrolling is started
     var onDone = void 0; // callback when scrolling is done
@@ -344,6 +346,7 @@ var scroller = function scroller() {
         duration = options.duration || defaults$$1.duration;
         easing = options.easing || defaults$$1.easing;
         offset = options.offset || defaults$$1.offset;
+        force = options.hasOwnProperty("force") ? options.force !== false : defaults$$1.force;
         cancelable = options.hasOwnProperty("cancelable") ? options.cancelable !== false : defaults$$1.cancelable;
         onStart = options.onStart || defaults$$1.onStart;
         onDone = options.onDone || defaults$$1.onDone;
@@ -368,6 +371,16 @@ var scroller = function scroller() {
 
         diffY = targetY - initialY;
         diffX = targetX - initialX;
+
+        if (!force) {
+            var containerTop = initialY;
+            var containerBottom = containerTop + container.offsetHeight;
+            var elementTop = targetY;
+            var elementBottom = elementTop + element.offsetHeight;
+            if (elementTop >= containerTop && elementBottom <= containerBottom) {
+                return;
+            }
+        }
 
         if (typeof easing === "string") {
             easing = easings[easing] || easings["ease"];
