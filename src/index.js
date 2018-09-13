@@ -10,7 +10,7 @@ const install = function(Vue, options) {
 if (typeof window !== "undefined" && window.Vue) {
     window.VueScrollTo = VueScrollTo;
     window.VueScrollTo.setDefaults = setDefaults;
-    Vue.use(install);
+    window.Vue.use(install);
 }
 
 VueScrollTo.install = install;
