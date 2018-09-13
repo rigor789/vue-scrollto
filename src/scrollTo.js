@@ -16,6 +16,7 @@ let defaults = {
     duration: 500,
     easing: "ease",
     offset: 0,
+    force: true,
     cancelable: true,
     onStart: false,
     onDone: false,
@@ -34,6 +35,7 @@ export const scroller = () => {
     let duration; // duration of the scrolling
     let easing; // easing to be used when scrolling
     let offset; // offset to be added (subtracted)
+    let force; // force scroll, even if element is visible
     let cancelable; // indicates if user can cancel the scroll or not.
     let onStart; // callback when scrolling is started
     let onDone; // callback when scrolling is done
@@ -148,6 +150,9 @@ export const scroller = () => {
         duration = options.duration || defaults.duration;
         easing = options.easing || defaults.easing;
         offset = options.offset || defaults.offset;
+        force = options.hasOwnProperty("force")
+            ? options.force !== false
+            : defaults.force;
         cancelable = options.hasOwnProperty("cancelable")
             ? options.cancelable !== false
             : defaults.cancelable;
@@ -178,6 +183,16 @@ export const scroller = () => {
 
         diffY = targetY - initialY;
         diffX = targetX - initialX;
+
+        if (!force) {
+            const containerTop = initialY;
+            const containerBottom = containerTop + container.offsetHeight;
+            const elementTop = targetY;
+            const elementBottom = elementTop + element.offsetHeight;
+            if (elementTop >= containerTop && elementBottom <= containerBottom) {
+                return;
+            }
+        }
 
         if (typeof easing === "string") {
             easing = easings[easing] || easings["ease"];
