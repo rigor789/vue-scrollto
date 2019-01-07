@@ -19,8 +19,8 @@ Vue.use(VueScrollTo)
 <h1 id="element">Hi. I'm element</h1>
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/egh95a0q/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
@@ -40,8 +40,8 @@ or
 </button>
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/efs4s9wa/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
@@ -56,8 +56,8 @@ or
 </button>
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/jcjc4mxs/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
@@ -71,8 +71,8 @@ or
 </button>
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/fhnb6gmh/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
@@ -81,17 +81,17 @@ or
 #### Using custom easing combined with duration
 
 ```html
-<button v-scroll-to="{ 
+<button v-scroll-to="{
         el: '#element',
         easing: [.6, .80, .30, 1.9],
-        duration: 2000 
+        duration: 2000
     }">
     Scroll to #element
 </button>
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/7xvxm7s9/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
@@ -101,12 +101,12 @@ or
 
 ```html
 <button v-scroll-to="{ el: '#element', offset: 200 }">
-    Scroll to 200px below #element 
+    Scroll to 200px below #element
 </button>
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/dmnmcpwj/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
@@ -115,7 +115,7 @@ or
 
 #### Adding callbacks
 ```html
-<button v-scroll-to="{ 
+<button v-scroll-to="{
         el: '#element',
         onDone: onDone,
         onCancel: onCancel
@@ -130,7 +130,7 @@ export default {
         onDone() {
             alert('done')
         },
-        
+
         onCancel() {
             alert('canceled')
             console.log(e)
@@ -139,8 +139,8 @@ export default {
 }
 ```
 
-<iframe width="100%" 
-        height="300" 
+<iframe width="100%"
+        height="300"
         src="//jsfiddle.net/rigor789/2mfg8tda/embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">

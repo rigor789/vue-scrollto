@@ -2,7 +2,7 @@
 - Add element parameter to onStart and onDone callbacks (#79)
 
 ## v2.10.0 (2018-3-4)
-- Added onStart callback (#76) 
+- Added onStart callback (#76)
 
 ## v2.9.0 (2018-2-24)
 - Export scroller factory function (#74)
@@ -41,10 +41,10 @@
 - Fixed setting `cancelable` to false being ignored
 
 ## v2.7.0 (2017-6-22)
-- Added horizontal scroll support (#31) 
+- Added horizontal scroll support (#31)
 
 ## v2.6.10 (2017-6-21)
-- Made cancel events listener passive 
+- Made cancel events listener passive
 
 ## v2.6.9 (2017-6-18)
 - Added cancelable option
@@ -87,12 +87,12 @@
 
 ### Bug fixes
 - Fixed jumping to the top of the page in firefox when scrolling on the `body` tag. [6f5615e](https://github.com/rigor789/vue-scrollto/commit/6f5615ebe8602bf766e1401d33c6b1c24a961db2)
-    
+
 ## [v2.5.3](https://github.com/rigor789/vue-scrollto/commit/1b6ee1380401545897f7403a720d75d97665c219) (2017-3-14)
 
 ### Additions
 - Added calculations for scrolling inside positioned elements. [7f730e8](https://github.com/rigor789/vue-scrollto/commit/7f730e82cbe0d585aa7ebd783eaf9761bc4add28)
-    
+
 ## [v2.5.2](https://github.com/rigor789/vue-scrollto/commit/d5aaf39b5c3584f40b298d1279d2a94a4dd9c940) (2017-3-14)
 
 ### Bug fixes
