@@ -3,19 +3,19 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 
 export default {
-    entry: './src/index.js',
-    dest: 'vue-scrollto.js',
-
+    input: './src/index.js',
+    output: {
+        file: 'vue-scrollto.js',
+        name: 'vue-scrollto',
+        format: 'umd',
+    },
     plugins: [
         resolve(),
         commonjs(),
         babel({
             exclude: 'node_modules/**',
-            presets: ['es2015-rollup'],
-            plugins: ['transform-object-assign']
+            presets: ['@babel/env'],
+            plugins: ['@babel/transform-object-assign']
         })
     ],
-
-    format: 'umd',
-    moduleName: 'vue-scrollto'
 }
