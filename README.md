@@ -52,16 +52,6 @@ Directly include it in html:
 
 ## Nuxt.js
 
-Install dependencies:
-
-```bash
-# With NPM:
-npm i vue-scrollto
-
-# With Yarn:
-yarn add vue-scrollto
-```
-
 Add `vue-scrollto/nuxt` to modules section of `nuxt.config.js`
 
 ```js
