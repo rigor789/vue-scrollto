@@ -50,6 +50,30 @@ Directly include it in html:
     When including it in html, it will automatically call `Vue.use` and also set a `VueScrollTo` variable that you can use!
 </p>
 
+## Nuxt.js
+
+Install dependencies:
+
+```bash
+# With NPM:
+npm i vue-scrollto
+
+# With Yarn:
+yarn add vue-scrollto
+```
+
+Add `vue-scrollto/nuxt` to modules section of `nuxt.config.js`
+
+```js
+{
+    modules: [
+        'vue-scrollto/nuxt',
+
+        // Or if you have custom options...
+        ['vue-scrollto/nuxt', { duration: 300 }],
+    ]
+}
+```
 
 ## Usage
 
