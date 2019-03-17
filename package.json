@@ -26,6 +26,7 @@
     "bezier-easing": "^2.0.3"
   },
   "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.44",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "lint-staged": "^3.3.1",
@@ -34,12 +35,15 @@
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "vuepress": "^1.0.0-alpha.44"
   },
   "scripts": {
     "build": "rollup -c",
     "lint-staged": "lint-staged",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "lint-staged": {
     "src/**.js": [

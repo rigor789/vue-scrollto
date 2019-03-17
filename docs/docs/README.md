@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 # vue-scrollto
 
 [![Vue 2.x](https://img.shields.io/badge/Vue-2.x-brightgreen.svg)](https://vuejs.org/v2/guide/)
@@ -5,7 +8,7 @@
 [![npm-downloads](https://img.shields.io/npm/dm/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollto/blob/master/LICENSE)
 
-[DEMO](https://vue-scrollto.netlify.com/)
+[DEMO](https://vue-scrollto.netlify.com/examples)
 
 Scrolling to elements was never this easy!
 
