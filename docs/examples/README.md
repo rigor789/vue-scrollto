@@ -1,3 +1,7 @@
+---
+sidebar: auto
+sidebarDepth: 2
+---
 # Examples
 
 Here are some examples of `vue-scrollto`!
@@ -48,7 +52,7 @@ or
 </iframe>
 
 
-#### Using a different duration
+### Using a different duration
 
 ```html
 <button v-scroll-to="{ element: '#element', duration: 5000 }">
@@ -63,7 +67,7 @@ or
         frameborder="0">
 </iframe>
 
-#### Using a different easing
+### Using a different easing
 
 ```html
 <button v-scroll-to="{ element: '#element', easing: 'linear' }">
@@ -78,7 +82,7 @@ or
         frameborder="0">
 </iframe>
 
-#### Using custom easing combined with duration
+### Using custom easing combined with duration
 
 ```html
 <button v-scroll-to="{ 
@@ -97,7 +101,7 @@ or
         frameborder="0">
 </iframe>
 
-#### Using offset
+### Using offset
 
 ```html
 <button v-scroll-to="{ el: '#element', offset: 200 }">
@@ -113,7 +117,7 @@ or
 </iframe>
 
 
-#### Adding callbacks
+### Adding callbacks
 ```html
 <button v-scroll-to="{ 
         el: '#element',
