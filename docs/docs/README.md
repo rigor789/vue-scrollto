@@ -8,7 +8,7 @@ sidebar: auto
 [![npm-downloads](https://img.shields.io/npm/dm/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollto/blob/master/LICENSE)
 
-[DEMO](https://rigor789.github.io/vue-scrollto/#/examples)
+[DEMO](https://vue-scrollto.netlify.com/examples)
 
 Scrolling to elements was never this easy!
 
