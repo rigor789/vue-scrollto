@@ -170,12 +170,14 @@ export const scroller = () => {
         }
 
         initialY = scrollTop(container);
-        targetY = cumulativeOffsetElement.top -
+        targetY =
+            cumulativeOffsetElement.top -
             cumulativeOffsetContainer.top +
             offset;
 
         initialX = scrollLeft(container);
-        targetX = cumulativeOffsetElement.left -
+        targetX =
+            cumulativeOffsetElement.left -
             cumulativeOffsetContainer.left +
             offset;
 
@@ -189,7 +191,13 @@ export const scroller = () => {
             const containerBottom = containerTop + container.offsetHeight;
             const elementTop = targetY;
             const elementBottom = elementTop + element.offsetHeight;
-            if (elementTop >= containerTop && elementBottom <= containerBottom) {
+            if (
+                elementTop >= containerTop &&
+                elementBottom <= containerBottom
+            ) {
+                // make sure to call the onDone callback even if there is no need to
+                // scroll the container. Fixes #111 (ref #118)
+                onDone(element);
                 return;
             }
         }
