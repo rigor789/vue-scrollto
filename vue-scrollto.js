@@ -1,3 +1,8 @@
+/*!
+  * vue-scrollto v2.14.0
+  * (c) 2019 Randjelovic Igor
+  * @license MIT
+  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -391,6 +396,9 @@
         var elementBottom = elementTop + element.offsetHeight;
 
         if (elementTop >= containerTop && elementBottom <= containerBottom) {
+          // make sure to call the onDone callback even if there is no need to
+          // scroll the container. Fixes #111 (ref #118)
+          onDone(element);
           return;
         }
       }
