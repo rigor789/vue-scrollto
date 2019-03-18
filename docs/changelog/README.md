@@ -1,3 +1,15 @@
+## v2.15.0 (2019-3-18)
+- call onDone when no scrolling is needed (#128)
+
+## v2.14.0 (2019-2-27)
+- Add nuxt module (#115)
+
+## v2.13.0 (2018-9-13)
+
+## v2.12.0 (2018-9-13)
+- Add force parameter (#103)
+- fix SSR issue with global.window (#104)
+
 ## v2.11.0 (2018-3-10)
 - Add element parameter to onStart and onDone callbacks (#79)
 
