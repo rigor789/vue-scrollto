@@ -233,7 +233,9 @@ function setDefaults(options) {
     defaults$$1 = _extends({}, defaults$$1, options);
 }
 
-var scroller = function scroller() {
+var scroller = function scroller(targetIn, _durationIn) {
+    var optionsIn = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
     var element = void 0; // element to scroll to
     var container = void 0; // container to scroll
     var duration = void 0; // duration of the scrolling
@@ -404,10 +406,10 @@ var scroller = function scroller() {
         };
     }
 
-    return scrollTo;
+    return scrollTo(targetIn, _durationIn, optionsIn);
 };
 
-var _scroller = scroller();
+var _scroller = scroller;
 
 var bindings = []; // store binding data
 
