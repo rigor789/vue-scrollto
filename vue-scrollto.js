@@ -1,5 +1,5 @@
 /*!
-  * vue-scrollto v2.14.0
+  * vue-scrollto v2.15.0
   * (c) 2019 Randjelovic Igor
   * @license MIT
   */
