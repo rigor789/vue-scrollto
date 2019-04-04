@@ -166,7 +166,7 @@ export const scroller = () => {
         var cumulativeOffsetElement = _.cumulativeOffset(element);
 
         if (typeof offset === "function") {
-            offset = offset();
+            offset = offset(element, container);
         }
 
         initialY = scrollTop(container);
