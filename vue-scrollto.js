@@ -392,7 +392,7 @@
       if (!force) {
         var containerTop = initialY;
         var containerBottom = containerTop + container.offsetHeight;
-        var elementTop = targetY;
+        var elementTop = targetY - offset;
         var elementBottom = elementTop + element.offsetHeight;
 
         if (elementTop >= containerTop && elementBottom <= containerBottom) {

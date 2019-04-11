@@ -189,7 +189,7 @@ export const scroller = () => {
         if (!force) {
             const containerTop = initialY;
             const containerBottom = containerTop + container.offsetHeight;
-            const elementTop = targetY;
+            const elementTop = targetY - offset;
             const elementBottom = elementTop + element.offsetHeight;
             if (
                 elementTop >= containerTop &&
