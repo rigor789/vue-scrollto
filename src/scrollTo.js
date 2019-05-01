@@ -209,7 +209,9 @@ export const scroller = () => {
         easingFn = BezierEasing.apply(BezierEasing, easing);
 
         if (!diffY && !diffX) return;
-        if (onStart) onStart(element);
+        const event = new Event("vueScrollTo", { cancelable: true });
+        if (onStart) onStart(element, event);
+        if (event.defaultPrevented) return;
 
         _.on(container, abortEvents, abortFn, { passive: true });
 
