@@ -204,7 +204,7 @@ export const scroller = () => {
             ) {
                 // make sure to call the onDone callback even if there is no need to
                 // scroll the container. Fixes #111 (ref #118)
-                onDone(element);
+                if (onDone) onDone(element);
                 return;
             }
         }
