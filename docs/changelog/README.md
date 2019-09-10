@@ -1,3 +1,10 @@
+## [2.16.3](https://github.com/rigor789/vue-scrollto/compare/v2.16.2...v2.16.3) (2019-09-10)
+
+
+### Bug Fixes
+
+* only call onDone if it's defined ([55afb50](https://github.com/rigor789/vue-scrollto/commit/55afb50))
+
 ## [2.16.2](https://github.com/rigor789/vue-scrollto/compare/v2.16.1...v2.16.2) (2019-09-10)
 
 
