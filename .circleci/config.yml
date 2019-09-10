@@ -11,16 +11,15 @@ jobs:
 
             - restore_cache:
                   keys:
-                      - v1-dependencies-{{ checksum "yarn.lock" }}
+                      - v1-dependencies-{{ checksum "package-lock.json" }}
                       - v1-dependencies-
 
-            - run: yarn install
+            - run: npm ci
 
             - save_cache:
                   paths:
                       - node_modules
-                      - ~/.cache/yarn
-                  key: v1-dependencies-{{ checksum "yarn.lock" }}
+                      - ~/.cache/npm
+                  key: v1-dependencies-{{ checksum "package-lock.json" }}
 
-            - run: npx semantic-release
-            #- run: yarn test --ci --runInBand
+            - run: npm run semantic-release
