@@ -1,3 +1,10 @@
+## [2.15.1](https://github.com/rigor789/vue-scrollto/compare/v2.15.0...v2.15.1) (2019-09-10)
+
+
+### Bug Fixes
+
+* onDone not being called with force: true (references [#111](https://github.com/rigor789/vue-scrollto/issues/111)) ([#129](https://github.com/rigor789/vue-scrollto/issues/129)) ([6ff03b2](https://github.com/rigor789/vue-scrollto/commit/6ff03b2))
+
 ## v2.15.0 (2019-3-18)
 - call onDone when no scrolling is needed (#128)
 
