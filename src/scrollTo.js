@@ -1,239 +1,227 @@
-import BezierEasing from "bezier-easing";
-import easings from "./easings";
-import _ from "./utils";
+import BezierEasing from 'bezier-easing'
+import easings from './easings'
+import _ from './utils'
 
 const abortEvents = [
-    "mousedown",
-    "wheel",
-    "DOMMouseScroll",
-    "mousewheel",
-    "keyup",
-    "touchmove"
-];
+  'mousedown',
+  'wheel',
+  'DOMMouseScroll',
+  'mousewheel',
+  'keyup',
+  'touchmove',
+]
 
 let defaults = {
-    container: "body",
-    duration: 500,
-    easing: "ease",
-    offset: 0,
-    force: true,
-    cancelable: true,
-    onStart: false,
-    onDone: false,
-    onCancel: false,
-    x: false,
-    y: true
-};
+  container: 'body',
+  duration: 500,
+  easing: 'ease',
+  offset: 0,
+  force: true,
+  cancelable: true,
+  onStart: false,
+  onDone: false,
+  onCancel: false,
+  x: false,
+  y: true,
+}
 
 export function setDefaults(options) {
-    defaults = Object.assign({}, defaults, options);
+  defaults = Object.assign({}, defaults, options)
 }
 
 export const scroller = () => {
-    let element; // element to scroll to
-    let container; // container to scroll
-    let duration; // duration of the scrolling
-    let easing; // easing to be used when scrolling
-    let offset; // offset to be added (subtracted)
-    let force; // force scroll, even if element is visible
-    let cancelable; // indicates if user can cancel the scroll or not.
-    let onStart; // callback when scrolling is started
-    let onDone; // callback when scrolling is done
-    let onCancel; // callback when scrolling is canceled / aborted
-    let x; // scroll on x axis
-    let y; // scroll on y axis
+  let element // element to scroll to
+  let container // container to scroll
+  let duration // duration of the scrolling
+  let easing // easing to be used when scrolling
+  let offset // offset to be added (subtracted)
+  let force // force scroll, even if element is visible
+  let cancelable // indicates if user can cancel the scroll or not.
+  let onStart // callback when scrolling is started
+  let onDone // callback when scrolling is done
+  let onCancel // callback when scrolling is canceled / aborted
+  let x // scroll on x axis
+  let y // scroll on y axis
 
-    let initialX; // initial X of container
-    let targetX; // target X of container
-    let initialY; // initial Y of container
-    let targetY; // target Y of container
-    let diffX; // difference
-    let diffY; // difference
+  let initialX // initial X of container
+  let targetX // target X of container
+  let initialY // initial Y of container
+  let targetY // target Y of container
+  let diffX // difference
+  let diffY // difference
 
-    let abort; // is scrolling aborted
+  let abort // is scrolling aborted
 
-    let abortEv; // event that aborted scrolling
-    let abortFn = e => {
-        if (!cancelable) return;
-        abortEv = e;
-        abort = true;
-    };
-    let easingFn;
+  let abortEv // event that aborted scrolling
+  let abortFn = e => {
+    if (!cancelable) return
+    abortEv = e
+    abort = true
+  }
+  let easingFn
 
-    let timeStart; // time when scrolling started
-    let timeElapsed; // time elapsed since scrolling started
+  let timeStart // time when scrolling started
+  let timeElapsed // time elapsed since scrolling started
 
-    let progress; // progress
+  let progress // progress
 
-    function scrollTop(container) {
-        let scrollTop = container.scrollTop;
+  function scrollTop(container) {
+    let scrollTop = container.scrollTop
 
-        if (container.tagName.toLowerCase() === "body") {
-            // in firefox body.scrollTop always returns 0
-            // thus if we are trying to get scrollTop on a body tag
-            // we need to get it from the documentElement
-            scrollTop = scrollTop || document.documentElement.scrollTop;
-        }
-
-        return scrollTop;
+    if (container.tagName.toLowerCase() === 'body') {
+      // in firefox body.scrollTop always returns 0
+      // thus if we are trying to get scrollTop on a body tag
+      // we need to get it from the documentElement
+      scrollTop = scrollTop || document.documentElement.scrollTop
     }
 
-    function scrollLeft(container) {
-        let scrollLeft = container.scrollLeft;
+    return scrollTop
+  }
 
-        if (container.tagName.toLowerCase() === "body") {
-            // in firefox body.scrollLeft always returns 0
-            // thus if we are trying to get scrollLeft on a body tag
-            // we need to get it from the documentElement
-            scrollLeft = scrollLeft || document.documentElement.scrollLeft;
-        }
+  function scrollLeft(container) {
+    let scrollLeft = container.scrollLeft
 
-        return scrollLeft;
+    if (container.tagName.toLowerCase() === 'body') {
+      // in firefox body.scrollLeft always returns 0
+      // thus if we are trying to get scrollLeft on a body tag
+      // we need to get it from the documentElement
+      scrollLeft = scrollLeft || document.documentElement.scrollLeft
     }
 
-    function step(timestamp) {
-        if (abort) return done();
-        if (!timeStart) timeStart = timestamp;
+    return scrollLeft
+  }
 
-        timeElapsed = timestamp - timeStart;
+  function step(timestamp) {
+    if (abort) return done()
+    if (!timeStart) timeStart = timestamp
 
-        progress = Math.min(timeElapsed / duration, 1);
-        progress = easingFn(progress);
+    timeElapsed = timestamp - timeStart
 
-        topLeft(
-            container,
-            initialY + diffY * progress,
-            initialX + diffX * progress
-        );
+    progress = Math.min(timeElapsed / duration, 1)
+    progress = easingFn(progress)
 
-        timeElapsed < duration ? window.requestAnimationFrame(step) : done();
+    topLeft(container, initialY + diffY * progress, initialX + diffX * progress)
+
+    timeElapsed < duration ? window.requestAnimationFrame(step) : done()
+  }
+
+  function done() {
+    if (!abort) topLeft(container, targetY, targetX)
+    timeStart = false
+
+    _.off(container, abortEvents, abortFn)
+    if (abort && onCancel) onCancel(abortEv, element)
+    if (!abort && onDone) onDone(element)
+  }
+
+  function topLeft(element, top, left) {
+    if (y) element.scrollTop = top
+    if (x) element.scrollLeft = left
+    if (element.tagName.toLowerCase() === 'body') {
+      // in firefox body.scrollTop doesn't scroll the page
+      // thus if we are trying to scrollTop on a body tag
+      // we need to scroll on the documentElement
+      if (y) document.documentElement.scrollTop = top
+      if (x) document.documentElement.scrollLeft = left
+    }
+  }
+
+  function scrollTo(target, _duration, options = {}) {
+    if (typeof _duration === 'object') {
+      options = _duration
+    } else if (typeof _duration === 'number') {
+      options.duration = _duration
     }
 
-    function done() {
-        if (!abort) topLeft(container, targetY, targetX);
-        timeStart = false;
+    element = _.$(target)
 
-        _.off(container, abortEvents, abortFn);
-        if (abort && onCancel) onCancel(abortEv, element);
-        if (!abort && onDone) onDone(element);
+    if (!element) {
+      return console.warn(
+        '[vue-scrollto warn]: Trying to scroll to an element that is not on the page: ' +
+          target
+      )
     }
 
-    function topLeft(element, top, left) {
-        if (y) element.scrollTop = top;
-        if (x) element.scrollLeft = left;
-        if (element.tagName.toLowerCase() === "body") {
-            // in firefox body.scrollTop doesn't scroll the page
-            // thus if we are trying to scrollTop on a body tag
-            // we need to scroll on the documentElement
-            if (y) document.documentElement.scrollTop = top;
-            if (x) document.documentElement.scrollLeft = left;
-        }
+    container = _.$(options.container || defaults.container)
+    duration = options.duration || defaults.duration
+    easing = options.easing || defaults.easing
+    offset = options.offset || defaults.offset
+    force = options.hasOwnProperty('force')
+      ? options.force !== false
+      : defaults.force
+    cancelable = options.hasOwnProperty('cancelable')
+      ? options.cancelable !== false
+      : defaults.cancelable
+    onStart = options.onStart || defaults.onStart
+    onDone = options.onDone || defaults.onDone
+    onCancel = options.onCancel || defaults.onCancel
+    x = options.x === undefined ? defaults.x : options.x
+    y = options.y === undefined ? defaults.y : options.y
+
+    let cumulativeOffsetContainer = _.cumulativeOffset(container)
+    let cumulativeOffsetElement = _.cumulativeOffset(element)
+
+    if (typeof offset === 'function') {
+      offset = offset(element, container)
     }
 
-    function scrollTo(target, _duration, options = {}) {
-        if (typeof _duration === "object") {
-            options = _duration;
-        } else if (typeof _duration === "number") {
-            options.duration = _duration;
-        }
+    initialY = scrollTop(container)
+    targetY =
+      cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset
 
-        element = _.$(target);
+    initialX = scrollLeft(container)
+    targetX =
+      cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset
 
-        if (!element) {
-            return console.warn(
-                "[vue-scrollto warn]: Trying to scroll to an element that is not on the page: " +
-                    target
-            );
-        }
+    abort = false
 
-        container = _.$(options.container || defaults.container);
-        duration = options.duration || defaults.duration;
-        easing = options.easing || defaults.easing;
-        offset = options.offset || defaults.offset;
-        force = options.hasOwnProperty("force")
-            ? options.force !== false
-            : defaults.force;
-        cancelable = options.hasOwnProperty("cancelable")
-            ? options.cancelable !== false
-            : defaults.cancelable;
-        onStart = options.onStart || defaults.onStart;
-        onDone = options.onDone || defaults.onDone;
-        onCancel = options.onCancel || defaults.onCancel;
-        x = options.x === undefined ? defaults.x : options.x;
-        y = options.y === undefined ? defaults.y : options.y;
+    diffY = targetY - initialY
+    diffX = targetX - initialX
 
-        let cumulativeOffsetContainer = _.cumulativeOffset(container);
-        let cumulativeOffsetElement = _.cumulativeOffset(element);
-
-        if (typeof offset === "function") {
-            offset = offset(element, container);
-        }
-
-        initialY = scrollTop(container);
-        targetY =
-            cumulativeOffsetElement.top -
-            cumulativeOffsetContainer.top +
-            offset;
-
-        initialX = scrollLeft(container);
-        targetX =
-            cumulativeOffsetElement.left -
-            cumulativeOffsetContainer.left +
-            offset;
-
-        abort = false;
-
-        diffY = targetY - initialY;
-        diffX = targetX - initialX;
-
-        if (!force) {
-            // When the container is the default (body) we need to use the viewport
-            // height, not the entire body height
-            const containerHeight =
-                container.tagName.toLowerCase() === "body"
-                    ? document.documentElement.clientHeight ||
-                      window.innerHeight
-                    : container.offsetHeight;
-            const containerTop = initialY;
-            const containerBottom = containerTop + containerHeight;
-            const elementTop = targetY - offset;
-            const elementBottom = elementTop + element.offsetHeight;
-            if (
-                elementTop >= containerTop &&
-                elementBottom <= containerBottom
-            ) {
-                // make sure to call the onDone callback even if there is no need to
-                // scroll the container. Fixes #111 (ref #118)
-                if (onDone) onDone(element);
-                return;
-            }
-        }
-
-        if (onStart) onStart(element);
-
-        if (!diffY && !diffX) {
-            if (onDone) onDone(element);
-            return;
-        }
-
-        if (typeof easing === "string") {
-            easing = easings[easing] || easings["ease"];
-        }
-
-        easingFn = BezierEasing.apply(BezierEasing, easing);
-
-        _.on(container, abortEvents, abortFn, { passive: true });
-
-        window.requestAnimationFrame(step);
-
-        return () => {
-            abortEv = null;
-            abort = true;
-        };
+    if (!force) {
+      // When the container is the default (body) we need to use the viewport
+      // height, not the entire body height
+      const containerHeight =
+        container.tagName.toLowerCase() === 'body'
+          ? document.documentElement.clientHeight || window.innerHeight
+          : container.offsetHeight
+      const containerTop = initialY
+      const containerBottom = containerTop + containerHeight
+      const elementTop = targetY - offset
+      const elementBottom = elementTop + element.offsetHeight
+      if (elementTop >= containerTop && elementBottom <= containerBottom) {
+        // make sure to call the onDone callback even if there is no need to
+        // scroll the container. Fixes #111 (ref #118)
+        if (onDone) onDone(element)
+        return
+      }
     }
 
-    return scrollTo;
-};
+    if (onStart) onStart(element)
 
-const _scroller = scroller();
-export default _scroller;
+    if (!diffY && !diffX) {
+      if (onDone) onDone(element)
+      return
+    }
+
+    if (typeof easing === 'string') {
+      easing = easings[easing] || easings['ease']
+    }
+
+    easingFn = BezierEasing.apply(BezierEasing, easing)
+
+    _.on(container, abortEvents, abortFn, { passive: true })
+
+    window.requestAnimationFrame(step)
+
+    return () => {
+      abortEv = null
+      abort = true
+    }
+  }
+
+  return scrollTo
+}
+
+const _scroller = scroller()
+export default _scroller

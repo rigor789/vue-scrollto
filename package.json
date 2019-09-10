@@ -26,21 +26,21 @@
     "bezier-easing": "2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "7.3.4",
+    "@babel/core": "7.6.0",
     "@babel/plugin-transform-object-assign": "7.2.0",
-    "@babel/preset-env": "7.3.4",
-    "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/git": "^7.0.16",
-    "@vuepress/plugin-google-analytics": "1.0.0-alpha.44",
-    "lint-staged": "8.1.5",
+    "@babel/preset-env": "7.6.0",
+    "@semantic-release/changelog": "3.0.4",
+    "@semantic-release/git": "7.0.16",
+    "@vuepress/plugin-google-analytics": "1.0.4",
+    "lint-staged": "9.2.5",
     "pre-commit": "1.2.2",
-    "prettier": "1.16.4",
-    "rollup": "1.6.0",
-    "rollup-plugin-babel": "4.3.2",
-    "rollup-plugin-commonjs": "9.2.1",
-    "rollup-plugin-node-resolve": "4.0.1",
-    "semantic-release": "^15.13.24",
-    "vuepress": "^1.0.0-alpha.44"
+    "prettier": "1.18.2",
+    "rollup": "1.21.2",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "semantic-release": "15.13.24",
+    "vuepress": "1.0.4"
   },
   "scripts": {
     "build": "rollup -c",
@@ -52,7 +52,7 @@
   },
   "lint-staged": {
     "src/**.js": [
-      "prettier --write --tab-width=4",
+      "prettier --write",
       "git add"
     ]
   },
@@ -61,15 +61,29 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      ["@semantic-release/changelog", {
-        "changelogFile": "docs/changelog/README.md"
-      }],
-      ["@semantic-release/git", {
-        "assets": ["docs/changelog/README.md"],
-        "message": "chore(changelog): ${nextRelease.version} [ci skip]"
-      }],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/changelog/README.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "docs/changelog/README.md"
+          ],
+          "message": "chore(changelog): ${nextRelease.version} [ci skip]"
+        }
+      ],
       "@semantic-release/npm",
       "@semantic-release/github"
     ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tabWidth": 2
   }
 }
