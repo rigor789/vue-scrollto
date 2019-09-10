@@ -1,3 +1,10 @@
+## [2.16.1](https://github.com/rigor789/vue-scrollto/compare/v2.16.0...v2.16.1) (2019-09-10)
+
+
+### Bug Fixes
+
+* force:false to correctly check element visibility in viewport ([#150](https://github.com/rigor789/vue-scrollto/issues/150)) ([14eb022](https://github.com/rigor789/vue-scrollto/commit/14eb022))
+
 # [2.16.0](https://github.com/rigor789/vue-scrollto/compare/v2.15.1...v2.16.0) (2019-09-10)
 
 
