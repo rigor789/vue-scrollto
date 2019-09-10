@@ -1,6 +1,6 @@
 {
   "name": "vue-scrollto",
-  "version": "2.15.0",
+  "version": "0.0.0-development",
   "description": "Adds a directive that listens for click events and scrolls to elements.",
   "main": "vue-scrollto.js",
   "keywords": [
@@ -29,6 +29,8 @@
     "@babel/core": "7.3.4",
     "@babel/plugin-transform-object-assign": "7.2.0",
     "@babel/preset-env": "7.3.4",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
     "@vuepress/plugin-google-analytics": "1.0.0-alpha.44",
     "lint-staged": "8.1.5",
     "pre-commit": "1.2.2",
@@ -37,6 +39,7 @@
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-commonjs": "9.2.1",
     "rollup-plugin-node-resolve": "4.0.1",
+    "semantic-release": "^15.13.24",
     "vuepress": "^1.0.0-alpha.44"
   },
   "scripts": {
@@ -44,7 +47,8 @@
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "src/**.js": [
@@ -52,5 +56,20 @@
       "git add"
     ]
   },
-  "pre-commit": "lint-staged"
+  "pre-commit": "lint-staged",
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      ["@semantic-release/changelog", {
+        "changelogFile": "docs/changelog/README.md"
+      }],
+      ["@semantic-release/git", {
+        "assets": ["docs/changelog/README.md"],
+        "message": "chore(changelog): ${nextRelease.version} [skip ci]"
+      }],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  }
 }
