@@ -162,8 +162,8 @@ export const scroller = () => {
         x = options.x === undefined ? defaults.x : options.x;
         y = options.y === undefined ? defaults.y : options.y;
 
-        var cumulativeOffsetContainer = _.cumulativeOffset(container);
-        var cumulativeOffsetElement = _.cumulativeOffset(element);
+        let cumulativeOffsetContainer = _.cumulativeOffset(container);
+        let cumulativeOffsetElement = _.cumulativeOffset(element);
 
         if (typeof offset === "function") {
             offset = offset(element, container);
@@ -212,7 +212,7 @@ export const scroller = () => {
         if (onStart) onStart(element);
 
         if (!diffY && !diffX) {
-            onDone(element);
+            if (onDone) onDone(element);
             return;
         }
 
