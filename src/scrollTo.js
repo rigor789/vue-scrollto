@@ -166,7 +166,7 @@ export const scroller = () => {
         var cumulativeOffsetElement = _.cumulativeOffset(element);
 
         if (typeof offset === "function") {
-            offset = offset();
+            offset = offset(element, container);
         }
 
         initialY = scrollTop(container);
@@ -187,8 +187,15 @@ export const scroller = () => {
         diffX = targetX - initialX;
 
         if (!force) {
+            // When the container is the default (body) we need to use the viewport
+            // height, not the entire body height
+            const containerHeight =
+                container.tagName.toLowerCase() === "body"
+                    ? document.documentElement.clientHeight ||
+                      window.innerHeight
+                    : container.offsetHeight;
             const containerTop = initialY;
-            const containerBottom = containerTop + container.offsetHeight;
+            const containerBottom = containerTop + containerHeight;
             const elementTop = targetY - offset;
             const elementBottom = elementTop + element.offsetHeight;
             if (
@@ -197,9 +204,16 @@ export const scroller = () => {
             ) {
                 // make sure to call the onDone callback even if there is no need to
                 // scroll the container. Fixes #111 (ref #118)
-                onDone(element);
+                if (onDone) onDone(element);
                 return;
             }
+        }
+
+        if (onStart) onStart(element);
+
+        if (!diffY && !diffX) {
+            onDone(element);
+            return;
         }
 
         if (typeof easing === "string") {
@@ -207,9 +221,6 @@ export const scroller = () => {
         }
 
         easingFn = BezierEasing.apply(BezierEasing, easing);
-
-        if (!diffY && !diffX) return;
-        if (onStart) onStart(element);
 
         _.on(container, abortEvents, abortFn, { passive: true });
 
