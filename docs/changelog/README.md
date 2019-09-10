@@ -1,3 +1,10 @@
+## [2.16.2](https://github.com/rigor789/vue-scrollto/compare/v2.16.1...v2.16.2) (2019-09-10)
+
+
+### Bug Fixes
+
+* calculation for {force: false, offset: nonZero} ([#139](https://github.com/rigor789/vue-scrollto/issues/139)) ([f01ce23](https://github.com/rigor789/vue-scrollto/commit/f01ce23)), closes [#138](https://github.com/rigor789/vue-scrollto/issues/138)
+
 ## [2.16.1](https://github.com/rigor789/vue-scrollto/compare/v2.16.0...v2.16.1) (2019-09-10)
 
 
