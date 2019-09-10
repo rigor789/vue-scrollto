@@ -32,8 +32,8 @@
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/git": "7.0.16",
     "@vuepress/plugin-google-analytics": "1.0.4",
+    "husky": "3.0.5",
     "lint-staged": "9.2.5",
-    "pre-commit": "1.2.2",
     "prettier": "1.18.2",
     "rollup": "1.21.2",
     "rollup-plugin-babel": "4.3.3",
@@ -56,7 +56,6 @@
       "git add"
     ]
   },
-  "pre-commit": "lint-staged",
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",
@@ -85,5 +84,10 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "tabWidth": 2
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
