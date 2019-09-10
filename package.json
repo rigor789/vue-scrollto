@@ -66,7 +66,7 @@
       }],
       ["@semantic-release/git", {
         "assets": ["docs/changelog/README.md"],
-        "message": "chore(changelog): ${nextRelease.version} [skip ci]"
+        "message": "chore(changelog): ${nextRelease.version} [ci skip]"
       }],
       "@semantic-release/npm",
       "@semantic-release/github"
