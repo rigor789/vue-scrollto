@@ -202,14 +202,18 @@ export const scroller = () => {
             }
         }
 
+        if (onStart) onStart(element);
+
+        if (!diffY && !diffX) {
+            onDone(element);
+            return;
+        }
+
         if (typeof easing === "string") {
             easing = easings[easing] || easings["ease"];
         }
 
         easingFn = BezierEasing.apply(BezierEasing, easing);
-
-        if (!diffY && !diffX) return;
-        if (onStart) onStart(element);
 
         _.on(container, abortEvents, abortFn, { passive: true });
 
