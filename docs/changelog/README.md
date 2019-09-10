@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/rigor789/vue-scrollto/compare/v2.15.1...v2.16.0) (2019-09-10)
+
+
+### Features
+
+* pass additional parameters to offset callback ([#135](https://github.com/rigor789/vue-scrollto/issues/135)) ([e862213](https://github.com/rigor789/vue-scrollto/commit/e862213))
+
 ## [2.15.1](https://github.com/rigor789/vue-scrollto/compare/v2.15.0...v2.15.1) (2019-09-10)
 
 
