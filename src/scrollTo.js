@@ -187,8 +187,15 @@ export const scroller = () => {
         diffX = targetX - initialX;
 
         if (!force) {
+            // When the container is the default (body) we need to use the viewport
+            // height, not the entire body height
+            const containerHeight =
+                container.tagName.toLowerCase() === "body"
+                    ? document.documentElement.clientHeight ||
+                      window.innerHeight
+                    : container.offsetHeight;
             const containerTop = initialY;
-            const containerBottom = containerTop + container.offsetHeight;
+            const containerBottom = containerTop + containerHeight;
             const elementTop = targetY;
             const elementBottom = elementTop + element.offsetHeight;
             if (
@@ -197,7 +204,7 @@ export const scroller = () => {
             ) {
                 // make sure to call the onDone callback even if there is no need to
                 // scroll the container. Fixes #111 (ref #118)
-                onDone(element);
+                if (onDone) onDone(element);
                 return;
             }
         }
