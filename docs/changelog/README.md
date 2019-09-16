@@ -1,3 +1,10 @@
+# [2.17.0](https://github.com/rigor789/vue-scrollto/compare/v2.16.3...v2.17.0) (2019-09-16)
+
+
+### Features
+
+* add typescript bindings ([#159](https://github.com/rigor789/vue-scrollto/issues/159)) ([1b39aaf](https://github.com/rigor789/vue-scrollto/commit/1b39aaf))
+
 ## [2.16.3](https://github.com/rigor789/vue-scrollto/compare/v2.16.2...v2.16.3) (2019-09-10)
 
 
