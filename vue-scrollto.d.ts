@@ -19,9 +19,9 @@ export interface ScrollOptions {
 }
 
 type ScrollToFunction = {
-    (options: ScrollOptions): void;
-    (element: ElementDescriptor, options?: ScrollOptions): void;
-    (element: ElementDescriptor, duration: number, options?: ScrollOptions): void;
+    (options: ScrollOptions): () => void;
+    (element: ElementDescriptor, options?: ScrollOptions): () => void;
+    (element: ElementDescriptor, duration: number, options?: ScrollOptions): () => void;
 }
 
 declare const _default: PluginObject<ScrollOptions> &
