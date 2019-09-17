@@ -1,3 +1,10 @@
+## [2.17.1](https://github.com/rigor789/vue-scrollto/compare/v2.17.0...v2.17.1) (2019-09-17)
+
+
+### Bug Fixes
+
+* improved type definitions ([#160](https://github.com/rigor789/vue-scrollto/issues/160)) ([f6a6596](https://github.com/rigor789/vue-scrollto/commit/f6a6596))
+
 # [2.17.0](https://github.com/rigor789/vue-scrollto/compare/v2.16.3...v2.17.0) (2019-09-16)
 
 
