@@ -41,7 +41,7 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "semantic-release": "15.13.24",
-    "vuepress": "1.0.4"
+    "vuepress": "1.1.0"
   },
   "scripts": {
     "build": "rollup -c",
