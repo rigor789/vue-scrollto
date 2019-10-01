@@ -143,7 +143,7 @@ If you need to customize the scrolling options, you can pass in an object litera
     Check out the Options section for more details about the available options.
 </p>
 
-### Programatically
+### Programmatically
 
 ```js
 var VueScrollTo = require('vue-scrollto');
