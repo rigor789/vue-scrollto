@@ -29,7 +29,7 @@
   "devDependencies": {
     "@babel/core": "7.7.4",
     "@babel/plugin-transform-object-assign": "7.7.4",
-    "@babel/preset-env": "7.6.2",
+    "@babel/preset-env": "7.7.4",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/git": "7.0.18",
     "@vuepress/plugin-google-analytics": "1.0.4",
