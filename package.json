@@ -27,7 +27,7 @@
     "bezier-easing": "2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "7.6.2",
+    "@babel/core": "7.7.4",
     "@babel/plugin-transform-object-assign": "7.7.4",
     "@babel/preset-env": "7.6.2",
     "@semantic-release/changelog": "3.0.4",
