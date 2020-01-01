@@ -40,7 +40,7 @@
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
-    "semantic-release": "15.13.31",
+    "semantic-release": "15.14.0",
     "vuepress": "1.2.0"
   },
   "scripts": {
