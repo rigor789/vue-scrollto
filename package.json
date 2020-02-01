@@ -34,7 +34,7 @@
     "@semantic-release/git": "7.0.18",
     "@vuepress/plugin-google-analytics": "1.2.0",
     "husky": "4.2.1",
-    "lint-staged": "9.5.0",
+    "lint-staged": "10.0.7",
     "prettier": "1.19.1",
     "rollup": "1.31.0",
     "rollup-plugin-babel": "4.3.3",
