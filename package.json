@@ -36,7 +36,7 @@
     "husky": "4.2.3",
     "lint-staged": "10.0.8",
     "prettier": "1.19.1",
-    "rollup": "1.32.0",
+    "rollup": "1.32.1",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
