@@ -39,8 +39,10 @@ function getBinding(el) {
 }
 
 function handleClick(e) {
+  const ctx = getBinding(this).binding
+  if (!ctx.value) return
+
   e.preventDefault()
-  let ctx = getBinding(this).binding
 
   if (typeof ctx.value === 'string') {
     return scrollTo(ctx.value)
