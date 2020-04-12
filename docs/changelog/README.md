@@ -1,3 +1,10 @@
+# [2.18.0](https://github.com/rigor789/vue-scrollto/compare/v2.17.1...v2.18.0) (2020-04-12)
+
+
+### Features
+
+* ignore clicks if directive value is falsy ([#243](https://github.com/rigor789/vue-scrollto/issues/243)) ([adaac9c](https://github.com/rigor789/vue-scrollto/commit/adaac9c56492451206bbb35797dc3f4fdb4f9a53)), closes [#242](https://github.com/rigor789/vue-scrollto/issues/242)
+
 ## [2.17.1](https://github.com/rigor789/vue-scrollto/compare/v2.17.0...v2.17.1) (2019-09-17)
 
 
