@@ -1,3 +1,10 @@
+## [2.18.1](https://github.com/rigor789/vue-scrollto/compare/v2.18.0...v2.18.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* allow passing 0 as offset ([#247](https://github.com/rigor789/vue-scrollto/issues/247)) ([09ee3c4](https://github.com/rigor789/vue-scrollto/commit/09ee3c4670622ea9db60a249068ca7612975e3dc))
+
 # [2.18.0](https://github.com/rigor789/vue-scrollto/compare/v2.17.1...v2.18.0) (2020-04-12)
 
 
