@@ -145,7 +145,7 @@ export const scroller = () => {
     container = _.$(options.container || defaults.container)
     duration = options.duration || defaults.duration
     easing = options.easing || defaults.easing
-    offset = options.offset || defaults.offset
+    offset = options.hasOwnProperty('offset') ? options.offset : defaults.offset
     force = options.hasOwnProperty('force')
       ? options.force !== false
       : defaults.force
