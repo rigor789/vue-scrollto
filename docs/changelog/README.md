@@ -1,3 +1,10 @@
+## [2.18.2](https://github.com/rigor789/vue-scrollto/compare/v2.18.1...v2.18.2) (2020-07-29)
+
+
+### Bug Fixes
+
+* export scroller to DOM ([#329](https://github.com/rigor789/vue-scrollto/issues/329)) ([4333d1e](https://github.com/rigor789/vue-scrollto/commit/4333d1e10a06ea519244e97c334c2e821c04fc2a))
+
 ## [2.18.1](https://github.com/rigor789/vue-scrollto/compare/v2.18.0...v2.18.1) (2020-04-15)
 
 
