@@ -1,5 +1,5 @@
 import VueScrollTo from './directive'
-import { setDefaults } from './scrollTo'
+import { setDefaults, scroller } from './scrollTo'
 
 const install = function(Vue, options) {
   if (options) setDefaults(options)
@@ -10,6 +10,7 @@ const install = function(Vue, options) {
 if (typeof window !== 'undefined' && window.Vue) {
   window.VueScrollTo = VueScrollTo
   window.VueScrollTo.setDefaults = setDefaults
+  window.VueScrollTo.scroller = scroller
   window.Vue.use(install)
 }
 
