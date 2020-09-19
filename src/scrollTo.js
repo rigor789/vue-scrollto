@@ -23,6 +23,7 @@ let defaults = {
   onCancel: false,
   x: false,
   y: true,
+  rtl: false,
 }
 
 export function setDefaults(options) {
@@ -42,6 +43,7 @@ export const scroller = () => {
   let onCancel // callback when scrolling is canceled / aborted
   let x // scroll on x axis
   let y // scroll on y axis
+  let rtl // scroll on right-to-left container
 
   let initialX // initial X of container
   let targetX // target X of container
@@ -143,6 +145,15 @@ export const scroller = () => {
     }
 
     container = _.$(options.container || defaults.container)
+
+    rtl = options.rtl || defaults.rtl
+
+    if (rtl) {
+      let childrens = [].slice.call(container.children)
+      let index = Array.prototype.indexOf.call(childrens.reverse(), element)
+      element = childrens.reverse()[index]
+    }
+
     duration = options.duration || defaults.duration
     easing = options.easing || defaults.easing
     offset = options.hasOwnProperty('offset') ? options.offset : defaults.offset
@@ -170,8 +181,25 @@ export const scroller = () => {
       cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset
 
     initialX = scrollLeft(container)
+
     targetX =
       cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset
+
+    // Container direction is right-to-left
+    if (rtl) {
+      targetX *= -1
+      /*
+      When direction is rtl
+      some browsers scrollLeft start zero to positive number
+      and others start with negative number to zero
+      */
+      if (
+        container.scrollLeft <= 0 &&
+        typeof window.scrollPositive === 'undefined'
+      )
+        targetX -= container.scrollWidth - container.offsetWidth
+      else window.scrollPositive = true
+    }
 
     abort = false
 

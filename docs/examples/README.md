@@ -1,3 +1,4 @@
+
 ---
 sidebar: auto
 sidebarDepth: 2
@@ -146,6 +147,83 @@ export default {
 <iframe width="100%" 
         height="300" 
         src="//jsfiddle.net/rigor789/2mfg8tda/embedded/result,html,js,css,resources"
+        allowfullscreen="allowfullscreen"
+        frameborder="0">
+</iframe>
+
+
+### Set rtl
+```html
+<div id="app">
+  <div>
+    <div>
+      <ul>
+        <li v-for="(item, index) in list" v-scroll-to="'#item' + index ">{{ item }}</li>
+      </ul>
+    </div>
+
+    <div class="items" id="items">
+      <div class="item" v-for="(item, index) in list" :id="'item' + index" v-scroll-to="'#item' + index ">
+        <h1>{{ item }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+```js
+Vue.use(VueScrollTo, {
+  container: "#items",
+  x: true,
+  y: false,
+  rtl: true,
+})
+
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      list: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+    }
+  },
+})
+```
+
+``` css
+body {
+    direction: rtl;
+  }
+
+  li {
+    display: inline-block;
+    margin: 10px:
+    cursor: pointer;
+    border: 1px solid #ff4500;
+    padding: .5rem;
+    width:20px;
+    text-align: center;
+  }
+
+  .items {
+    margin-right: 10%;
+    max-height: 300px;
+    max-width: 50%;
+    overflow: auto;
+    display: flex;
+  }
+
+  .item {
+    min-height: 100px;
+    border: 1px solid #000000;
+    margin-left: 5rem;
+    padding: 1rem;
+    min-width: 150px;
+    text-align: center;
+  }
+```
+<iframe width="100%" 
+        height="300" 
+        src="//jsfiddle.net/mosikd/dq3coz69/12//embedded/result,html,js,css,resources"
         allowfullscreen="allowfullscreen"
         frameborder="0">
 </iframe>
