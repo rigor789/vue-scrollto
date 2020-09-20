@@ -4,8 +4,8 @@ import { setDefaults, scroller } from './scrollTo'
 const install = function(Vue, options) {
   if (options) setDefaults(options)
   Vue.directive('scroll-to', VueScrollTo)
-    const properties = Vue.config.globalProperties || Vue.prototype
-    properties.$scrollTo = VueScrollTo.scrollTo
+  const properties = Vue.config.globalProperties || Vue.prototype
+  properties.$scrollTo = VueScrollTo.scrollTo
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
