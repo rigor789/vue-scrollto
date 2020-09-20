@@ -12,7 +12,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.VueScrollTo = VueScrollTo
   window.VueScrollTo.setDefaults = setDefaults
   window.VueScrollTo.scroller = scroller
-  if (Vue.use) window.Vue.use(install)
+  if (window.Vue.use) window.Vue.use(install)
 }
 
 VueScrollTo.install = install
