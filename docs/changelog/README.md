@@ -1,3 +1,10 @@
+# [2.19.0](https://github.com/rigor789/vue-scrollto/compare/v2.18.2...v2.19.0) (2020-10-09)
+
+
+### Features
+
+* add support for Vue 3 ([#371](https://github.com/rigor789/vue-scrollto/issues/371)) ([739de11](https://github.com/rigor789/vue-scrollto/commit/739de11c96e3c163af708325b2b82fb73f37c655))
+
 ## [2.18.2](https://github.com/rigor789/vue-scrollto/compare/v2.18.1...v2.18.2) (2020-07-29)
 
 
