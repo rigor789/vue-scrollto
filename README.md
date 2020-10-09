@@ -88,7 +88,8 @@ Vue.use(VueScrollTo, {
      onDone: false,
      onCancel: false,
      x: false,
-     y: true
+     y: true,
+     rtl: false
  })
 ```
 
@@ -106,7 +107,8 @@ VueScrollTo.setDefaults({
     onDone: false,
     onCancel: false,
     x: false,
-    y: true
+    y: true,
+    rtl: false
 })
 ```
 
@@ -133,7 +135,8 @@ If you need to customize the scrolling options, you can pass in an object litera
      onDone: onDone,
      onCancel: onCancel,
      x: false,
-     y: true
+     y: true,
+     rtl: false
  }">
     Scroll to #element
 </a>
@@ -164,7 +167,8 @@ var options = {
       // scrolling has been interrupted
     },
     x: false,
-    y: true
+    y: true,
+    rtl: false
 }
 
 var cancelScroll = VueScrollTo.scrollTo(element, duration, options)
@@ -197,7 +201,7 @@ The easing to be used when animating. Read more in the [Easing section](#easing-
 *Default:* `ease`
 
 #### offset 
-The offset that should be applied when scrolling. This option accepts a callback function since `v2.8.0`. 
+The offset that should be applied when scrolling. This option accepts a callback function since `v2.8.0`.
 
 *Default:* `0`
 
@@ -235,6 +239,11 @@ Whether or not we want scrolling on the `x` axis
 Whether or not we want scrolling on the `y` axis
  
 *Default:* `true`
+
+#### rtl 
+The `rtl` to be used when the `container` direction is right-to-left like persian language
+ 
+*Default:* `false`
 
 
 <h2 id="easing-detailed">Easing</h2>
