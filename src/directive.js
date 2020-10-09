@@ -50,7 +50,7 @@ function handleClick(e) {
   scrollTo(ctx.value.el || ctx.value.element, ctx.value)
 }
 
-export default {
+const directiveHooks = {
   bind(el, binding) {
     getBinding(el).binding = binding
     _.on(el, 'click', handleClick)
@@ -61,7 +61,16 @@ export default {
   },
   update(el, binding) {
     getBinding(el).binding = binding
-  },
+  }
+}
+
+export default {
+  bind: directiveHooks.bind,
+  unbind: directiveHooks.unbind,
+  update: directiveHooks.update,
+  beforeMount: directiveHooks.bind,
+  unmounted: directiveHooks.unbind,
+  updated: directiveHooks.update,
   scrollTo,
   bindings,
 }
