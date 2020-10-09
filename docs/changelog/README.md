@@ -1,3 +1,10 @@
+## [2.19.1](https://github.com/rigor789/vue-scrollto/compare/v2.19.0...v2.19.1) (2020-10-09)
+
+
+### Bug Fixes
+
+* allow passing 0 as duration ([#376](https://github.com/rigor789/vue-scrollto/issues/376)) ([5f69269](https://github.com/rigor789/vue-scrollto/commit/5f69269db6ff9f29d4f1509eb056efc739379cfe))
+
 # [2.19.0](https://github.com/rigor789/vue-scrollto/compare/v2.18.2...v2.19.0) (2020-10-09)
 
 
