@@ -14,6 +14,7 @@ const abortEvents = [
 let defaults = {
   container: 'body',
   duration: 500,
+  dynamicPosition: false,
   easing: 'ease',
   offset: 0,
   force: true,
@@ -33,6 +34,7 @@ export const scroller = () => {
   let element // element to scroll to
   let container // container to scroll
   let duration // duration of the scrolling
+  let dynamicPosition //checks the target position at each step
   let easing // easing to be used when scrolling
   let offset // offset to be added (subtracted)
   let force // force scroll, even if element is visible
@@ -51,6 +53,9 @@ export const scroller = () => {
   let diffY // difference
 
   let abort // is scrolling aborted
+
+  let cumulativeOffsetContainer
+  let cumulativeOffsetElement
 
   let abortEv // event that aborted scrolling
   let abortFn = e => {
@@ -94,6 +99,24 @@ export const scroller = () => {
   function step(timestamp) {
     if (abort) return done()
     if (!timeStart) timeStart = timestamp
+
+    // When a site has a lot of media that can be loaded asynchronously,
+    // the targetY/targetX may end up in the wrong place during scrolling.
+    // So we will check this at each step
+    if (dynamicPosition) {
+      cumulativeOffsetContainer = _.cumulativeOffset(container)
+      cumulativeOffsetElement = _.cumulativeOffset(element)
+      if (x) {
+        targetX =
+          cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset
+        diffX = targetX - initialX
+      }
+      if (y) {
+        targetY =
+          cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset
+        diffY = targetY - initialY
+      }
+    }
 
     timeElapsed = timestamp - timeStart
 
@@ -143,7 +166,12 @@ export const scroller = () => {
     }
 
     container = _.$(options.container || defaults.container)
-    duration = options.hasOwnProperty('duration') ? options.duration : defaults.duration
+    duration = options.hasOwnProperty('duration')
+      ? options.duration
+      : defaults.duration
+    dynamicPosition = options.hasOwnProperty('dynamicPosition')
+      ? options.dynamicPosition
+      : defaults.dynamicPosition
     easing = options.easing || defaults.easing
     offset = options.hasOwnProperty('offset') ? options.offset : defaults.offset
     force = options.hasOwnProperty('force')
@@ -158,8 +186,8 @@ export const scroller = () => {
     x = options.x === undefined ? defaults.x : options.x
     y = options.y === undefined ? defaults.y : options.y
 
-    let cumulativeOffsetContainer = _.cumulativeOffset(container)
-    let cumulativeOffsetElement = _.cumulativeOffset(element)
+    cumulativeOffsetContainer = _.cumulativeOffset(container)
+    cumulativeOffsetElement = _.cumulativeOffset(element)
 
     if (typeof offset === 'function') {
       offset = offset(element, container)

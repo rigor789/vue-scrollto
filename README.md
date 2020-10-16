@@ -98,6 +98,7 @@ In case you are using the browser version (directly including the script on your
 VueScrollTo.setDefaults({
     container: "body",
     duration: 500,
+    dynamicPosition: true,
     easing: "ease",
     offset: 0,
     force: true,
@@ -125,6 +126,7 @@ If you need to customize the scrolling options, you can pass in an object litera
      el: '#element',
      container: '#container',
      duration: 500,
+     dynamicPosition: true
      easing: 'linear',
      offset: -200,
      force: true,
@@ -151,6 +153,7 @@ var VueScrollTo = require('vue-scrollto');
 var options = {
     container: '#container',
     easing: 'ease-in',
+    dynamicPosition: true,
     offset: -60,
     force: true,
     cancelable: true,
@@ -190,6 +193,11 @@ The container that has to be scrolled.
 The duration (in milliseconds) of the scrolling animation. 
 
 *Default:* `500` 
+
+#### dynamicPosition
+Recalculating targetY/targetX at each scroll step. Useful when you don't know the final height of the container, and it grows as it scrolls.
+
+*Default:* `false` 
 
 #### easing 
 The easing to be used when animating. Read more in the [Easing section](#easing-detailed). 
