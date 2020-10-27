@@ -14,7 +14,7 @@ const abortEvents = [
 let defaults = {
   container: 'body',
   duration: 500,
-  dynamicPosition: false,
+  lazy: true,
   easing: 'ease',
   offset: 0,
   force: true,
@@ -34,8 +34,8 @@ export const scroller = () => {
   let element // element to scroll to
   let container // container to scroll
   let duration // duration of the scrolling
-  let dynamicPosition //checks the target position at each step
   let easing // easing to be used when scrolling
+  let lazy //checks the target position at each step
   let offset // offset to be added (subtracted)
   let force // force scroll, even if element is visible
   let cancelable // indicates if user can cancel the scroll or not.
@@ -96,6 +96,22 @@ export const scroller = () => {
     return scrollLeft
   }
 
+  function recalculateTargets() {
+    cumulativeOffsetContainer = _.cumulativeOffset(container)
+    cumulativeOffsetElement = _.cumulativeOffset(element)
+
+    if (x) {
+      targetX =
+        cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset
+      diffX = targetX - initialX
+    }
+    if (y) {
+      targetY =
+        cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset
+      diffY = targetY - initialY
+    }
+  }
+
   function step(timestamp) {
     if (abort) return done()
     if (!timeStart) timeStart = timestamp
@@ -103,19 +119,8 @@ export const scroller = () => {
     // When a site has a lot of media that can be loaded asynchronously,
     // the targetY/targetX may end up in the wrong place during scrolling.
     // So we will check this at each step
-    if (dynamicPosition) {
-      cumulativeOffsetContainer = _.cumulativeOffset(container)
-      cumulativeOffsetElement = _.cumulativeOffset(element)
-      if (x) {
-        targetX =
-          cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset
-        diffX = targetX - initialX
-      }
-      if (y) {
-        targetY =
-          cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset
-        diffY = targetY - initialY
-      }
+    if (!lazy) {
+      recalculateTargets()
     }
 
     timeElapsed = timestamp - timeStart
@@ -169,9 +174,7 @@ export const scroller = () => {
     duration = options.hasOwnProperty('duration')
       ? options.duration
       : defaults.duration
-    dynamicPosition = options.hasOwnProperty('dynamicPosition')
-      ? options.dynamicPosition
-      : defaults.dynamicPosition
+    lazy = options.hasOwnProperty('lazy') ? options.lazy : defaults.lazy
     easing = options.easing || defaults.easing
     offset = options.hasOwnProperty('offset') ? options.offset : defaults.offset
     force = options.hasOwnProperty('force')
@@ -186,20 +189,14 @@ export const scroller = () => {
     x = options.x === undefined ? defaults.x : options.x
     y = options.y === undefined ? defaults.y : options.y
 
-    cumulativeOffsetContainer = _.cumulativeOffset(container)
-    cumulativeOffsetElement = _.cumulativeOffset(element)
-
     if (typeof offset === 'function') {
       offset = offset(element, container)
     }
 
     initialY = scrollTop(container)
-    targetY =
-      cumulativeOffsetElement.top - cumulativeOffsetContainer.top + offset
-
     initialX = scrollLeft(container)
-    targetX =
-      cumulativeOffsetElement.left - cumulativeOffsetContainer.left + offset
+
+    recalculateTargets()
 
     abort = false
 
