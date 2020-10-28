@@ -200,7 +200,7 @@ The easing to be used when animating. Read more in the [Easing section](#easing-
 *Default:* `ease`
 
 #### lazy
-Recalculating targetY/targetX at each scroll step. Useful when you don't know the final height of the container, and it grows as it scrolls.
+By default targetX/targetY are calculated once at the start of a scroll, however if the target may shift around during the scroll - setting `lazy` to `false` will force recalculation of targetX/targetY at each scroll step.
 
 *Default:* `true` 
 

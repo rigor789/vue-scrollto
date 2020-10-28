@@ -35,7 +35,7 @@ export const scroller = () => {
   let container // container to scroll
   let duration // duration of the scrolling
   let easing // easing to be used when scrolling
-  let lazy //checks the target position at each step
+  let lazy // checks the target position at each step
   let offset // offset to be added (subtracted)
   let force // force scroll, even if element is visible
   let cancelable // indicates if user can cancel the scroll or not.
