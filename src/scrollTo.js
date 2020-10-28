@@ -193,15 +193,13 @@ export const scroller = () => {
       offset = offset(element, container)
     }
 
-    initialY = scrollTop(container)
     initialX = scrollLeft(container)
+    initialY = scrollTop(container)
 
+    // calculates cumulative offsets and targetX/Y + diffX/Y
     recalculateTargets()
 
     abort = false
-
-    diffY = targetY - initialY
-    diffX = targetX - initialX
 
     if (!force) {
       // When the container is the default (body) we need to use the viewport
