@@ -98,6 +98,7 @@ In case you are using the browser version (directly including the script on your
 VueScrollTo.setDefaults({
     container: "body",
     duration: 500,
+    lazy: false,
     easing: "ease",
     offset: 0,
     force: true,
@@ -125,6 +126,7 @@ If you need to customize the scrolling options, you can pass in an object litera
      el: '#element',
      container: '#container',
      duration: 500,
+     lazy: false
      easing: 'linear',
      offset: -200,
      force: true,
@@ -151,6 +153,7 @@ var VueScrollTo = require('vue-scrollto');
 var options = {
     container: '#container',
     easing: 'ease-in',
+    lazy: false,
     offset: -60,
     force: true,
     cancelable: true,
@@ -195,6 +198,11 @@ The duration (in milliseconds) of the scrolling animation.
 The easing to be used when animating. Read more in the [Easing section](#easing-detailed). 
 
 *Default:* `ease`
+
+#### lazy
+By default targetX/targetY are calculated once at the start of a scroll, however if the target may shift around during the scroll - setting `lazy` to `false` will force recalculation of targetX/targetY at each scroll step.
+
+*Default:* `true` 
 
 #### offset 
 The offset that should be applied when scrolling. This option accepts a callback function since `v2.8.0`. 
