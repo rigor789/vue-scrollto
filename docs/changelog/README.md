@@ -1,3 +1,10 @@
+# [2.20.0](https://github.com/rigor789/vue-scrollto/compare/v2.19.1...v2.20.0) (2020-10-28)
+
+
+### Features
+
+* add lazy option to allow recalculating targets ([#388](https://github.com/rigor789/vue-scrollto/issues/388)) ([e3c70c5](https://github.com/rigor789/vue-scrollto/commit/e3c70c59531b78fdb2a1cd4fa4f257447c1aa2a9))
+
 ## [2.19.1](https://github.com/rigor789/vue-scrollto/compare/v2.19.0...v2.19.1) (2020-10-09)
 
 
