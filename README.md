@@ -1,6 +1,7 @@
 # vue-scrollto
 
 [![Vue 2.x](https://img.shields.io/badge/Vue-2.x-brightgreen.svg)](https://vuejs.org/v2/guide/)
+[![Vue 3.x](https://img.shields.io/badge/Vue-3.x-blueviolet.svg)](https://vuejs.org/v2/guide/)
 [![npm](https://img.shields.io/npm/v/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![npm-downloads](https://img.shields.io/npm/dm/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollto/blob/master/LICENSE)
@@ -9,7 +10,7 @@
 
 Scrolling to elements was never this easy!
 
-This is for `vue 2.x`
+This is for `vue 2.x` and `vue 3.x` (since [`v2.19.0`](https://github.com/rigor789/vue-scrollto/releases/tag/v2.19.0))
 
 For `vue 1.x` use `vue-scrollTo@1.0.1` (note the capital T) but keep in mind that the old version depends on `jquery`.
 
