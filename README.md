@@ -1,7 +1,7 @@
 # vue-scrollto
 
 [![Vue 2.x](https://img.shields.io/badge/Vue-2.x-brightgreen.svg)](https://vuejs.org/v2/guide/)
-[![Vue 3.x](https://img.shields.io/badge/Vue-3.x-blueviolet.svg)](https://vuejs.org/v2/guide/)
+[![Vue 3.x](https://img.shields.io/badge/Vue-3.x-blueviolet.svg)](https://v3.vuejs.org/guide/introduction.html)
 [![npm](https://img.shields.io/npm/v/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![npm-downloads](https://img.shields.io/npm/dm/vue-scrollto.svg)](https://www.npmjs.com/package/vue-scrollto)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/rigor789/vue-scrollto/blob/master/LICENSE)
