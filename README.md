@@ -84,6 +84,9 @@ app.directive('scroll-to', VueScrollTo)
 app.mount('#app')
 ```
 
+_Note:_ You need to add `scroll-to` directive to each of
+your Vue 3.x instances. Since Vue 3 has no global instance.
+
 ### Vue 2.x
 #### As a vue directive
 ```js
