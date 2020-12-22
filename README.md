@@ -128,7 +128,7 @@ VueScrollTo.setDefaults({
 })
 ```
 
-### Browser and Vue 2.x or 3.x
+### Browser and Vue 2.x
 ```html
 <a href="#" v-scroll-to="'#element'">Scroll to #element</a>
 
