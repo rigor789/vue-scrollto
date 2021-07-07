@@ -33,7 +33,7 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@vuepress/plugin-google-analytics": "^1.4.0",
-    "husky": "^4.2.5",
+    "husky": "^7.0.1",
     "lint-staged": "^10.1.2",
     "prettier": "^1.19.1",
     "rollup": "^2.4.0",
