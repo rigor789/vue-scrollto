@@ -24,6 +24,7 @@
     "url": "https://github.com/rigor789/vue-scrollto"
   },
   "dependencies": {
+    "@nuxt/kit": "^3.0.0-rc.11",
     "bezier-easing": "2.1.0"
   },
   "devDependencies": {
