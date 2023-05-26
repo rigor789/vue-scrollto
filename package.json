@@ -32,7 +32,6 @@
     "@babel/preset-env": "^7.9.5",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "@vuepress/plugin-google-analytics": "^1.4.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.2",
     "prettier": "^1.19.1",
@@ -41,18 +40,21 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "semantic-release": "^17.0.4",
-    "vuepress": "^1.4.0"
+    "vitepress": "^1.0.0-beta.1"
   },
   "scripts": {
     "build": "rollup -c",
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "semantic-release": "semantic-release"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "semantic-release": "semantic-release",
+    "format": "prettier --write **/*.js",
+    "format:check": "prettier --check **/*.js"
   },
   "lint-staged": {
-    "src/**.js": [
+    "**/*.js": [
       "prettier --write",
       "git add"
     ]

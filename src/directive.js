@@ -61,7 +61,7 @@ const directiveHooks = {
   },
   update(el, binding) {
     getBinding(el).binding = binding
-  }
+  },
 }
 
 export default {
