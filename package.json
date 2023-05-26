@@ -23,6 +23,9 @@
     "type": "git",
     "url": "https://github.com/rigor789/vue-scrollto"
   },
+  "workspaces": [
+    "docs"
+  ],
   "dependencies": {
     "bezier-easing": "2.1.0"
   },
@@ -39,16 +42,15 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "semantic-release": "^17.0.4",
-    "vitepress": "^1.0.0-beta.1"
+    "semantic-release": "^17.0.4"
   },
   "scripts": {
     "build": "rollup -c",
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
+    "docs:dev": "npm -w docs run dev",
+    "docs:build": "npm -w docs run build",
+    "docs:preview": "npm -w docs run preview",
     "semantic-release": "semantic-release",
     "format": "prettier --write **/*.js",
     "format:check": "prettier --check **/*.js"

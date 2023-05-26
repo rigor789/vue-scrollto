@@ -1,0 +1,12 @@
+{
+  "name": "vue-scrollto-docs",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview ."
+  },
+  "dependencies": {
+    "vitepress": "^1.0.0-beta.1"
+  }
+}
