@@ -70,7 +70,25 @@ Add `vue-scrollto/nuxt` to modules section of `nuxt.config.js`
 
 vue-scrollto can be used either as a vue directive, or programatically from your javascript.
 
-### As a vue directive
+### Vue 3.x
+
+```js
+import Vue from 'vue'
+import VueScrollTo from 'vue-scrollto'
+
+// Initialize Vue app
+const app = Vue.createApp({})
+// Add Vue directive
+app.directive('scroll-to', VueScrollTo)
+
+app.mount('#app')
+```
+
+_Note:_ You need to add `scroll-to` directive to each of
+your Vue 3.x instances. Since Vue 3 has no global instance.
+
+### Vue 2.x
+#### As a vue directive
 ```js
 var Vue = require('vue');
 var VueScrollTo = require('vue-scrollto');
@@ -93,6 +111,7 @@ Vue.use(VueScrollTo, {
  })
 ```
 
+### Browser
 In case you are using the browser version (directly including the script on your page), you can set the defaults with
  
 ```js
@@ -112,6 +131,7 @@ VueScrollTo.setDefaults({
 })
 ```
 
+### Browser and Vue 2.x
 ```html
 <a href="#" v-scroll-to="'#element'">Scroll to #element</a>
 
