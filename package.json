@@ -66,14 +66,14 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "docs/changelog/README.md"
+          "changelogFile": "docs/changelog/index.md"
         }
       ],
       [
         "@semantic-release/git",
         {
           "assets": [
-            "docs/changelog/README.md"
+            "docs/changelog/index.md"
           ],
           "message": "chore(changelog): ${nextRelease.version} [ci skip]"
         }
