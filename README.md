@@ -90,6 +90,7 @@ Vue.use(VueScrollTo, {
      onCancel: false,
      x: false,
      y: true
+     preserveId: false,
  })
 ```
 
@@ -109,6 +110,7 @@ VueScrollTo.setDefaults({
     onCancel: false,
     x: false,
     y: true
+    preserveId: false,
 })
 ```
 
@@ -137,6 +139,7 @@ If you need to customize the scrolling options, you can pass in an object litera
      onCancel: onCancel,
      x: false,
      y: true
+     preserveId: false,
  }">
     Scroll to #element
 </a>
@@ -169,6 +172,7 @@ var options = {
     },
     x: false,
     y: true
+    preserveId: false,
 }
 
 var cancelScroll = VueScrollTo.scrollTo(element, duration, options)
@@ -245,6 +249,10 @@ Whether or not we want scrolling on the `y` axis
  
 *Default:* `true`
 
+#### preserveId
+Indicates if hash scrolling update url with the target id or not.
+
+*Default:* `false`
 
 <h2 id="easing-detailed">Easing</h2>
 

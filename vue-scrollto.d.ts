@@ -16,6 +16,7 @@ export interface ScrollOptions {
     onCancel?: ((event: Event, element: Element) => any) | false;
     x?: boolean;
     y?: boolean;
+    preserveId?: boolean
 }
 
 type ScrollToFunction = {

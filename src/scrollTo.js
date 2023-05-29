@@ -24,6 +24,7 @@ let defaults = {
   onCancel: false,
   x: false,
   y: true,
+  preserveId: false,
 }
 
 export function setDefaults(options) {
@@ -44,6 +45,7 @@ export const scroller = () => {
   let onCancel // callback when scrolling is canceled / aborted
   let x // scroll on x axis
   let y // scroll on y axis
+  let preserveId // preserve element's id in url hash
 
   let initialX // initial X of container
   let targetX // target X of container
@@ -188,6 +190,10 @@ export const scroller = () => {
     onCancel = options.onCancel || defaults.onCancel
     x = options.x === undefined ? defaults.x : options.x
     y = options.y === undefined ? defaults.y : options.y
+    preserveId =
+      options.preserveId === undefined
+        ? defaults.preserveId
+        : options.preserveId
 
     if (typeof offset === 'function') {
       offset = offset(element, container)
@@ -220,6 +226,8 @@ export const scroller = () => {
       }
     }
 
+    if (preserveId && target.startsWith('#'))
+      window.history.pushState(null, '', `#${element.id}`)
     if (onStart) onStart(element)
 
     if (!diffY && !diffX) {
